@@ -7,6 +7,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.rmi.Naming;
+
+import com.quiz.controller.Client;
+import com.quiz.model.ClientImp;
+import com.quiz.model.ServerImp;
+import com.quiz.model.data;
 
 /**
  * JavaFX App
@@ -32,6 +38,13 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        try {
+            ServerImp server = (ServerImp) Naming.lookup("//localhost/Quiz");
+            ClientImp client = new Client();
+            server.registerClient(client);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         launch();
     }
 

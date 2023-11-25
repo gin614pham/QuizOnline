@@ -1,4 +1,4 @@
-package com.quiz.server.model;
+package com.quiz.model;
 
 import java.rmi.Remote;
 
