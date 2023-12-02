@@ -6,10 +6,9 @@ import java.util.ArrayList;
 
 import com.quiz.model.ClientImp;
 import com.quiz.model.ServerImp;
-import com.quiz.model.data;
 
 public class Server extends UnicastRemoteObject implements ServerImp {
-    private ArrayList<data> clients;
+    private ArrayList<ClientImp> clients;
 
     public Server() throws RemoteException {
         clients = new ArrayList<>();
@@ -17,13 +16,13 @@ public class Server extends UnicastRemoteObject implements ServerImp {
 
     public void registerClient(ClientImp client) throws Exception {
         System.out.println("Register client: " + client);
-        clients.add(new data(client));
+        clients.add(client);
         client.update("Hello, " + client);
     }
 
     public void unregisterClient(ClientImp client) throws Exception {
         System.out.println("Unregister client: " + client);
-        clients.remove(new data(client));
+        clients.remove(client);
     }
 
 }

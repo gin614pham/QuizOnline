@@ -1,0 +1,47 @@
+.colorText {
+    -fx-text-fill: #0a66e7;
+    -fx-prompt-text-fill: #0a66e7;
+    -fx-border-color: #0a66e7;
+}
+
+
+#email {
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-font-size: 16;
+    -fx-font-weight: normal;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: left;
+}
+
+
+#password {
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-font-size: 16;
+    -fx-font-weight: normal;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: left;
+}
+
+#title {
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: center;
+}
+
+#login {
+    -fx-font-size: 16;
+    -fx-font-weight: normal;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: center;
+    -fx-background-color: #0a66e7;
+    -fx-text-fill: white;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-color: #0a66e7;
+    -fx-border-width: 0 0 0 0;
+    -fx-background-insets: 0 0 0 0;
+    -fx-padding: 5 10 5 10;
+}

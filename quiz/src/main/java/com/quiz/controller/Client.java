@@ -15,9 +15,5 @@ public class Client extends UnicastRemoteObject implements ClientImp {
     public void update(String client) throws RemoteException {
         System.out.println("Update: " + client);
     }
-    // @Override
-    // public void update(String client) {
-    // System.out.println("Update: " + client);
-    // }
 
 }
