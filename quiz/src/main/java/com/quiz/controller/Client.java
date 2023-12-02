@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import com.quiz.model.ClientImp;
-import com.quiz.model.data;
 
 public class Client extends UnicastRemoteObject implements ClientImp {
 
@@ -13,8 +12,12 @@ public class Client extends UnicastRemoteObject implements ClientImp {
     }
 
     @Override
-    public void update(String client) {
+    public void update(String client) throws RemoteException {
         System.out.println("Update: " + client);
     }
+    // @Override
+    // public void update(String client) {
+    // System.out.println("Update: " + client);
+    // }
 
 }

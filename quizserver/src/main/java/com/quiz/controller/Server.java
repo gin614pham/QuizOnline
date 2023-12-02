@@ -17,10 +17,8 @@ public class Server extends UnicastRemoteObject implements ServerImp {
 
     public void registerClient(ClientImp client) throws Exception {
         System.out.println("Register client: " + client);
-        for (data clientImp : clients) {
-            clientImp.getClient().update(client.toString());
-        }
         clients.add(new data(client));
+        client.update("Hello, " + client);
     }
 
     public void unregisterClient(ClientImp client) throws Exception {
