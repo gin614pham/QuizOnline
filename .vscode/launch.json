@@ -4,11 +4,21 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "com.quiz.App",
+            "projectName": "quiz",
+            "vmArgs": "--module-path \"D:/Code/openjfx-21_windows-x64_bin-sdk/javafx-sdk-21/lib/\" --add-modules javafx.controls,javafx.fxml"
+        },
         {
             "type": "java",
             "name": "Current File",
             "request": "launch",
-            "mainClass": "${file}"
+            "mainClass": "${file}",
+            "vmArgs": "--module-path \"D:/Code/openjfx-21_windows-x64_bin-sdk/javafx-sdk-21/lib/\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
@@ -16,14 +26,14 @@
             "request": "launch",
             "mainClass": "com.quiz.server.Main",
             "projectName": "quizserver",
-            
         },
         {
             "type": "java",
             "name": "App",
             "request": "launch",
             "mainClass": "com.quiz/com.quiz.App",
-            "projectName": "quiz"
+            "projectName": "quiz",
+            "vmArgs": "--module-path \"D:/Code/openjfx-21_windows-x64_bin-sdk/javafx-sdk-21/lib/\" --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }

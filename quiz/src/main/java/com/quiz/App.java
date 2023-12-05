@@ -14,6 +14,9 @@ import com.quiz.controller.Client;
 import com.quiz.model.ClientImp;
 import com.quiz.model.ServerImp;
 
+import atlantafx.base.theme.PrimerDark;
+import atlantafx.base.theme.PrimerLight;
+
 /**
  * JavaFX App
  */
@@ -28,10 +31,14 @@ public class App extends Application {
             ServerImp server = (ServerImp) Naming.lookup("//localhost/Quiz");
             ClientImp client = new Client();
             server.registerClient(client);
+            Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
+            Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
             scene = new Scene(loadFXML("screen/auth/login"));
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
+            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Connection Error");
             alert.setHeaderText(null);

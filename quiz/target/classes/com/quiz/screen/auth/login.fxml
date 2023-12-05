@@ -10,7 +10,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="383.0" stylesheets="@../../css/auth/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="login" layoutX="109.0" layoutY="266.0" mnemonicParsing="false" text="Login" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="105.0">
@@ -37,12 +36,12 @@
       <Text fx:id="title" fill="#0a66e7" layoutX="159.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="160.659375" />
       <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="55.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="297.8">
          <image>
-            <Image url="@../../../../../../../../../image/icons8-email-50.png" />
+            <Image url="@../../public/icon/icons8-email-50.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="57.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="301.2">
          <image>
-            <Image url="@../../../../../../../../../image/icons8-password-key-50.png" />
+            <Image url="@../../public/icon/icons8-password-key-50.png" />
          </image>
       </ImageView>
    </children>
