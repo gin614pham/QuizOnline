@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="383.0" stylesheets="@../../css/auth/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quiz.controller.Auth">
+   <children>
+      <Button fx:id="btn" layoutX="104.0" layoutY="360.0" mnemonicParsing="false" text="Register" AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="105.60000000000002">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Button>
+      <PasswordField fx:id="textInput" layoutX="84.8" layoutY="256.0" prefHeight="38.0" prefWidth="250.0" promptText="Password" styleClass="colorText" AnchorPane.leftAnchor="84.8" AnchorPane.rightAnchor="48.0" />
+      <TextField fx:id="textInput" cache="true" layoutX="85.0" layoutY="158.0" prefHeight="38.0" prefWidth="250.0" promptText="Name" styleClass="colorText" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="47.79999999999998">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TextField>
+      <ImageView fitHeight="64.0" fitWidth="60.0" layoutX="142.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="180.6" AnchorPane.topAnchor="14.0">
+         <image>
+            <Image url="@../../public/logo/logoQ.png" />
+         </image>
+      </ImageView>
+      <Text fill="#0a66e7" layoutX="195.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="uiz" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="141.78046875" AnchorPane.topAnchor="27.41015625">
+         <font>
+            <Font name="Arial Italic" size="36.0" />
+         </font>
+      </Text>
+      <Text fx:id="title" fill="#0a66e7" layoutX="145.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="145.234375" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="55.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="297.8">
+         <image>
+            <Image url="@../../public/icon/icons8-account-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="57.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="301.2">
+         <image>
+            <Image url="@../../public/icon/icons8-email-50.png" />
+         </image>
+      </ImageView>
+      <PasswordField fx:id="textInput" layoutX="85.6" layoutY="303.0" prefHeight="38.0" prefWidth="250.0" promptText="Confirm Password" styleClass="colorText" AnchorPane.leftAnchor="85.6" />
+      <TextField fx:id="textInput" cache="true" layoutX="85.0" layoutY="204.0" prefHeight="38.0" prefWidth="250.0" promptText="Email" styleClass="colorText" AnchorPane.leftAnchor="85.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TextField>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="53.6" layoutY="262.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="53.6">
+         <image>
+            <Image url="@../../public/icon/icons8-password-key-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="55.2" layoutY="314.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="55.2">
+         <image>
+            <Image url="@../../public/icon/icons8-password-50.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="97.0" layoutY="413.0" text="You have a account? " />
+      <Hyperlink layoutX="210.0" layoutY="410.0" onAction="#switchToLogin" text="Login" />
+   </children>
+</AnchorPane>

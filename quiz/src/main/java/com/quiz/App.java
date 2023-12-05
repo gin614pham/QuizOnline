@@ -14,9 +14,6 @@ import com.quiz.controller.Client;
 import com.quiz.model.ClientImp;
 import com.quiz.model.ServerImp;
 
-import atlantafx.base.theme.PrimerDark;
-import atlantafx.base.theme.PrimerLight;
-
 /**
  * JavaFX App
  */
@@ -31,8 +28,6 @@ public class App extends Application {
             ServerImp server = (ServerImp) Naming.lookup("//localhost/Quiz");
             ClientImp client = new Client();
             server.registerClient(client);
-            Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
-            Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
             scene = new Scene(loadFXML("screen/auth/login"));
             stage.setResizable(false);
             stage.setScene(scene);
@@ -49,8 +44,11 @@ public class App extends Application {
         }
     }
 
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+        scene.getWindow().sizeToScene();
+        scene.getWindow().centerOnScreen();
+
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

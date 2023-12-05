@@ -5,17 +5,7 @@
 }
 
 
-#email {
-    -fx-border-width: 0 0 1 0;
-    -fx-background-color: transparent;
-    -fx-font-size: 16;
-    -fx-font-weight: normal;
-    -fx-font-family: Roboto;
-    -fx-text-alignment: left;
-}
-
-
-#password {
+#textInput {
     -fx-border-width: 0 0 1 0;
     -fx-background-color: transparent;
     -fx-font-size: 16;
@@ -31,7 +21,7 @@
     -fx-text-alignment: center;
 }
 
-#login {
+#btn {
     -fx-font-size: 16;
     -fx-font-weight: normal;
     -fx-font-family: Roboto;
