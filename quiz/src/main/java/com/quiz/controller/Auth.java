@@ -17,4 +17,16 @@ public class Auth {
     private void switchToRegister() throws IOException {
         App.setRoot("screen/auth/register");
     }
+
+    // create function Login
+    @FXML
+    private void login() throws IOException {
+
+    }
+
+    // create function Register
+    @FXML
+    private void register() throws IOException {
+
+    }
 }

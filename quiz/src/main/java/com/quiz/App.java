@@ -20,12 +20,13 @@ import com.quiz.model.ServerImp;
 public class App extends Application {
 
     private static Scene scene;
+    private static ServerImp server;
 
     @Override
     public void start(Stage stage) throws IOException {
 
         try {
-            ServerImp server = (ServerImp) Naming.lookup("//localhost/Quiz");
+            server = (ServerImp) Naming.lookup("//localhost/Quiz");
             ClientImp client = new Client();
             server.registerClient(client);
             scene = new Scene(loadFXML("screen/auth/login"));
