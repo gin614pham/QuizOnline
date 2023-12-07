@@ -57,6 +57,10 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    public static ServerImp getServer() {
+        return server;
+    }
+
     public static void main(String[] args) {
         launch();
     }

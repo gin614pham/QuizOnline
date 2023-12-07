@@ -25,4 +25,16 @@ public class Server extends UnicastRemoteObject implements ServerImp {
         clients.remove(client);
     }
 
+    @Override
+    public boolean login(String emailText, String passwordText) throws Exception {
+        System.out.println("Login: " + emailText + ", " + passwordText);
+        return true;
+    }
+
+    @Override
+    public boolean register(String emailText, String nameText, String passwordText) throws Exception {
+        System.out.println("Register: " + emailText + ", " + nameText + ", " + passwordText);
+        return true;
+    }
+
 }

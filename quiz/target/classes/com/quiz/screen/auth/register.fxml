@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
@@ -14,16 +15,24 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="383.0" stylesheets="@../../css/auth/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quiz.controller.Auth">
    <children>
-      <Button fx:id="btn" layoutX="104.0" layoutY="360.0" mnemonicParsing="false" text="Register" AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="105.60000000000002">
+      <Button fx:id="btnRegister" layoutX="104.0" layoutY="360.0" mnemonicParsing="false" onAction="#register" styleClass="btn" text="Register" AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="105.60000000000002">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </Button>
-      <PasswordField fx:id="textInput" layoutX="84.8" layoutY="256.0" prefHeight="38.0" prefWidth="250.0" promptText="Password" styleClass="colorText" AnchorPane.leftAnchor="84.8" AnchorPane.rightAnchor="48.0" />
-      <TextField fx:id="textInput" cache="true" layoutX="85.0" layoutY="158.0" prefHeight="38.0" prefWidth="250.0" promptText="Name" styleClass="colorText" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="47.79999999999998">
+      <PasswordField fx:id="password" layoutX="84.8" layoutY="256.0" prefHeight="38.0" prefWidth="250.0" promptText="Password" AnchorPane.leftAnchor="84.8" AnchorPane.rightAnchor="48.0">
+         <styleClass>
+            <String fx:value="colorText" />
+            <String fx:value="textInput" />
+         </styleClass></PasswordField>
+      <TextField fx:id="name" cache="true" layoutX="85.0" layoutY="158.0" prefHeight="38.0" prefWidth="250.0" promptText="Name" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="47.79999999999998">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <styleClass>
+            <String fx:value="textInput" />
+            <String fx:value="colorText" />
+         </styleClass>
       </TextField>
       <ImageView fitHeight="64.0" fitWidth="60.0" layoutX="142.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="180.6" AnchorPane.topAnchor="14.0">
          <image>
@@ -46,11 +55,19 @@
             <Image url="@../../public/icon/icons8-email-50.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="textInput" layoutX="85.6" layoutY="303.0" prefHeight="38.0" prefWidth="250.0" promptText="Confirm Password" styleClass="colorText" AnchorPane.leftAnchor="85.6" />
-      <TextField fx:id="textInput" cache="true" layoutX="85.0" layoutY="204.0" prefHeight="38.0" prefWidth="250.0" promptText="Email" styleClass="colorText" AnchorPane.leftAnchor="85.0">
+      <PasswordField fx:id="confirm" layoutX="85.6" layoutY="303.0" prefHeight="38.0" prefWidth="250.0" promptText="Confirm Password" AnchorPane.leftAnchor="85.6">
+         <styleClass>
+            <String fx:value="colorText" />
+            <String fx:value="textInput" />
+         </styleClass></PasswordField>
+      <TextField fx:id="email" cache="true" layoutX="85.0" layoutY="204.0" prefHeight="38.0" prefWidth="250.0" promptText="Email" AnchorPane.leftAnchor="85.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <styleClass>
+            <String fx:value="colorText" />
+            <String fx:value="textInput" />
+         </styleClass>
       </TextField>
       <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="53.6" layoutY="262.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="53.6">
          <image>
