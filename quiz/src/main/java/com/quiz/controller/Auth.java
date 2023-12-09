@@ -1,9 +1,13 @@
 package com.quiz.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import com.quiz.App;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -19,13 +23,15 @@ public class Auth {
     // create function switch to Login
     @FXML
     private void switchToLogin() throws IOException {
-        App.setRoot("screen/auth/login");
+        Parent root = App.loadFXML("screen/auth/login");
+        App.setRoot(root);
     }
 
     // create function switch to Register
     @FXML
     private void switchToRegister() throws IOException {
-        App.setRoot("screen/auth/register");
+        Parent root = App.loadFXML("screen/auth/register");
+        App.setRoot(root);
     }
 
     // create function Login
@@ -37,7 +43,24 @@ public class Auth {
 
         // send data to server
         App.getServer().login(emailText, passwordText);
-        App.setRoot("screen/app/home");
+        FXMLLoader fxmlLoader = App.lFXML("screen/app/home");
+        Parent root = fxmlLoader.load();
+        Home home = fxmlLoader.getController();
+        // create list of card
+        ArrayList<Card> list = new ArrayList<>();
+        // add card
+        list.add(new Card());
+        list.add(new Card());
+        list.add(new Card());
+        list.add(new Card());
+
+        // for each card in list
+        for (Card card : list) {
+            // add card to card view
+            home.addCard(card);
+        }
+        App.setRoot(root);
+
     }
 
     // create function Register
