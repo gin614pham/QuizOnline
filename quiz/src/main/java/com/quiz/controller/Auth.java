@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.quiz.App;
 import com.quiz.model.data.Quiz;
+import com.quiz.model.data.User;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,23 +40,20 @@ public class Auth {
     @FXML
     private void login() throws Exception {
         // get data from text field and password field
-        String emailText = email.getText();
-        String passwordText = password.getText();
+        User auth = new User();
+        auth.setEmail(email.getText());
+        auth.setPassword(password.getText());
 
         // send data to server
-        App.getServer().login(emailText, passwordText);
+        App.getServer().login(auth);
         FXMLLoader fxmlLoader = App.lFXML("screen/app/home");
         Parent root = fxmlLoader.load();
         Home home = fxmlLoader.getController();
         // create dummy data
-        ArrayList<Quiz> list = new ArrayList<Quiz>();
-        list.add(new Quiz(1, "Quiz 1", 10, "admin"));
-        list.add(new Quiz(2, "Quiz 2", 10, "admin"));
-        list.add(new Quiz(3, "Quiz 3", 10, "admin"));
-        list.add(new Quiz(4, "Quiz 4", 10, "admin"));
-        list.add(new Quiz(5, "Quiz 5", 10, "admin"));
+        ArrayList<Quiz> list = App.getServer().getQuizzes();
         for (Quiz quiz : list) {
             home.addCard(quiz);
+            home.addCardRecent(quiz);
         }
 
         home.setMenu();
@@ -66,16 +64,17 @@ public class Auth {
     // create function Register
     @FXML
     private void register() throws Exception {
+        User auth = new User();
+        auth.setEmail(email.getText());
+        auth.setName(name.getText());
+        auth.setPassword(password.getText());
         // get data from text field and password field
-        String emailText = email.getText();
-        String nameText = name.getText();
-        String passwordText = password.getText();
         String confirmText = confirm.getText();
 
         // check if password and confirm password is same
-        if (passwordText.equals(confirmText)) {
+        if (password.getText().equals(confirmText)) {
             // send data to server
-            App.getServer().register(emailText, nameText, passwordText);
+            App.getServer().register(auth);
         }
     }
 }

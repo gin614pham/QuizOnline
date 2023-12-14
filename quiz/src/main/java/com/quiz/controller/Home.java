@@ -7,7 +7,6 @@ import com.quiz.model.data.Quiz;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -15,9 +14,10 @@ public class Home {
 
     @FXML
     private HBox menu;
-
     @FXML
     private HBox CardNew;
+    @FXML
+    private HBox CardRecent;
 
     public void setMenu() throws IOException {
         FXMLLoader fxmlLoader = App.lFXML("components/menu");
@@ -32,8 +32,14 @@ public class Home {
         Card controller = fxmlLoader.getController();
         controller.setCard(quiz);
         CardNew.getChildren().add(cardd);
-        // cardview.getChildren().add(cardd);
+    }
 
+    public void addCardRecent(Quiz quiz) throws IOException {
+        FXMLLoader fxmlLoader = App.lFXML("components/card");
+        VBox card = fxmlLoader.load();
+        Card controller = fxmlLoader.getController();
+        controller.setCard(quiz);
+        CardRecent.getChildren().add(card);
     }
 
 }
