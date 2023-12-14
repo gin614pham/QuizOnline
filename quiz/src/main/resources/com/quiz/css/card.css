@@ -1,6 +1,6 @@
 .card {
     -fx-background-color: white;
-    -fx-border-color: #0a66e7;
+    -fx-border-color: #269CDF;
     -fx-border-width: 1px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
@@ -10,20 +10,20 @@
 
 
 .title {
-    -fx-text-fill: #0a66e7;
+    -fx-text-fill: #269CDF;
 }
 
 .subtitle {
-    -fx-text-fill: white;
-    -fx-border-color: #0a66e7;
+    -fx-text-fill: #269CDF;
+    -fx-border-color: #269CDF;
     -fx-border-width: 1px;
     -fx-border-radius: 45;
     -fx-background-radius: 45;
     -fx-padding: 5px;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
-    -fx-background-color: #4a83d2;
+    -fx-background-color: white;
 }
 
 .author {
-    -fx-text-fill: #0a66e7;
+    -fx-text-fill: #269CDF;
 }

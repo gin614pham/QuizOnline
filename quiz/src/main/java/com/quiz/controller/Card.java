@@ -3,13 +3,16 @@ package com.quiz.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.quiz.model.data.Quiz;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class Card implements Initializable {
+public class Card {
+    int id;
 
     @FXML
     private Label lab1;
@@ -20,18 +23,10 @@ public class Card implements Initializable {
     @FXML
     private Label title;
 
-    // initialize card
-    @FXML
-    public void initialize() {
-        lab1.setText("aa");
-        sub.setText("dsadsa");
-        title.setText("er");
-    }
-
     // function handle click
     @FXML
     public void handleClick() {
-        System.out.println("clicked");
+        System.out.println("clicked on card " + id);
     }
 
     //
@@ -39,15 +34,19 @@ public class Card implements Initializable {
         return new VBox();
     }
 
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        lab1.setText("aa");
-        sub.setText("dsadsa");
-        title.setText("er");
+    public void setCard(Quiz quiz) {
+        this.id = quiz.getId();
+        this.title.setText(quiz.getName());
+        this.sub.setText(quiz.getAuthor());
+        this.lab1.setText(String.valueOf(quiz.getNumQuestions()));
     }
 
-    public void setCard(Card card) {
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

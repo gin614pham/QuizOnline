@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox fx:id="card" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleClick" prefHeight="122.0" prefWidth="375.0" styleClass="card" stylesheets="@../css/card/card.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quiz.controller.Card">
+<VBox fx:id="card" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleClick" prefHeight="100.0" prefWidth="275.0" styleClass="card" stylesheets="@../css/card.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quiz.controller.Card">
    <children>
-      <Label fx:id="title" prefHeight="46.0" prefWidth="367.0" styleClass="title" text="Title">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="sub" prefHeight="30.0" prefWidth="95.0" styleClass="subtitle" text="sub" />
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label fx:id="title" prefHeight="46.0" prefWidth="367.0" styleClass="title" text="Title">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="sub" prefHeight="30.0" prefWidth="95.0" styleClass="subtitle" text="sub" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </VBox>
       <Label fx:id="lab1" styleClass="author" text="lab1" />
    </children>
 </VBox>

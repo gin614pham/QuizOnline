@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.quiz.App;
+import com.quiz.model.data.Quiz;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,19 +47,18 @@ public class Auth {
         FXMLLoader fxmlLoader = App.lFXML("screen/app/home");
         Parent root = fxmlLoader.load();
         Home home = fxmlLoader.getController();
-        // create list of card
-        ArrayList<Card> list = new ArrayList<>();
-        // add card
-        list.add(new Card());
-        list.add(new Card());
-        list.add(new Card());
-        list.add(new Card());
-
-        // for each card in list
-        for (Card card : list) {
-            // add card to card view
-            home.addCard(card);
+        // create dummy data
+        ArrayList<Quiz> list = new ArrayList<Quiz>();
+        list.add(new Quiz(1, "Quiz 1", 10, "admin"));
+        list.add(new Quiz(2, "Quiz 2", 10, "admin"));
+        list.add(new Quiz(3, "Quiz 3", 10, "admin"));
+        list.add(new Quiz(4, "Quiz 4", 10, "admin"));
+        list.add(new Quiz(5, "Quiz 5", 10, "admin"));
+        for (Quiz quiz : list) {
+            home.addCard(quiz);
         }
+
+        home.setMenu();
         App.setRoot(root);
 
     }
