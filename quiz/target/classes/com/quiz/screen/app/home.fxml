@@ -11,41 +11,46 @@
 <VBox fx:id="root" prefHeight="650.0" prefWidth="975.0" stylesheets="@../../css/home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quiz.controller.Home">
   <children>
       <HBox fx:id="menu" prefHeight="60.0" prefWidth="975.0" />
-      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;">
+      <VBox fx:id="content" prefHeight="595.0" prefWidth="975.0">
          <children>
-            <Label text="New" textFill="#269cdf">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <Separator prefWidth="200.0" style="-fx-background-color: #269CDF; -fx-border-width: 0;" />
-            <ScrollPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="130.0" prefWidth="200.0">
-               <content>
-                  <HBox fx:id="CardNew" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding></HBox>
-               </content>
-            </ScrollPane>
-         </children>
-      </VBox>
-      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;">
-         <children>
-            <Label text="Recent" textFill="#269cdf">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <Separator prefWidth="200.0" style="-fx-background-color: #269CDF; -fx-border-width: 0;" />
-            <ScrollPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="130.0" prefWidth="200.0">
-               <content>
-                  <HBox fx:id="CardRecent" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </HBox>
-               </content>
-            </ScrollPane>
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;">
+               <children>
+                  <Label text="New" textFill="#269cdf">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Separator prefWidth="200.0" style="-fx-background-color: #269CDF; -fx-border-width: 0;" />
+                  <ScrollPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="130.0" prefWidth="200.0">
+                     <content>
+                        <HBox fx:id="CardNew" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;">
+               <children>
+                  <Label text="Recent" textFill="#269cdf">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Separator prefWidth="200.0" style="-fx-background-color: #269CDF; -fx-border-width: 0;" />
+                  <ScrollPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="130.0" prefWidth="200.0">
+                     <content>
+                        <HBox fx:id="CardRecent" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
          </children>
       </VBox>
   </children>

@@ -50,4 +50,22 @@ public class Server extends UnicastRemoteObject implements ServerImp {
         return dummyList;
     }
 
+    @Override
+    public ArrayList<Quiz> search(String label) throws Exception {
+        ArrayList<Quiz> dummyList = new ArrayList<Quiz>();
+        dummyList.add(new Quiz(1, "Quiz 1", 10, "admin"));
+        dummyList.add(new Quiz(2, "Quiz 2", 10, "admin"));
+        dummyList.add(new Quiz(3, "Quiz 3", 10, "admin"));
+        dummyList.add(new Quiz(4, "Quiz 4", 10, "admin"));
+        dummyList.add(new Quiz(5, "Quiz 5", 10, "admin"));
+        dummyList.add(new Quiz(6, "Quiz 6", 10, "admin"));
+        dummyList.add(new Quiz(7, "Quiz 7", 10, "admin"));
+        dummyList.add(new Quiz(8, "Quiz 8", 10, "admin"));
+        dummyList.add(new Quiz(9, "Quiz 9", 10, "admin"));
+        dummyList.add(new Quiz(10, "Quiz 10", 10, "admin"));
+        dummyList.add(new Quiz(11, "Quiz 11", 10, "admin"));
+        dummyList.add(new Quiz(12, "Quiz 12", 10, "admin"));
+        return dummyList;
+    }
+
 }

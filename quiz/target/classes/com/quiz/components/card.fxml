@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -20,6 +21,10 @@
             <Insets bottom="5.0" />
          </VBox.margin>
       </VBox>
-      <Label fx:id="lab1" styleClass="author" text="lab1" />
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="lab1" styleClass="author" text="lab1" />
+         </children>
+      </HBox>
    </children>
 </VBox>

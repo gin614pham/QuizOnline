@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="cradSearch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleClick" prefHeight="75.0" prefWidth="600.0" styleClass="root" stylesheets="@../css/cardSearch.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quiz.controller.CardSearch">
+   <children>
+      <Label fx:id="title" styleClass="title" text="Label" />
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Label fx:id="numQuiz" styleClass="subtitle" text="Label">
+               <HBox.margin>
+                  <Insets bottom="2.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="author" styleClass="author" text="Label" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

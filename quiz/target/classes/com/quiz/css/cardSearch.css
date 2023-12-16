@@ -1,0 +1,38 @@
+.root {
+    -fx-background-color: white;
+    -fx-border-color: #269CDF;
+    -fx-border-width: 1px;
+    -fx-border-radius: 25px;
+    -fx-background-radius: 25px;
+    -fx-padding: 4px 20px 4px 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+}
+
+.title {
+    -fx-text-fill: #269CDF;
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+}
+
+.subtitle {
+    -fx-text-fill: #269CDF;
+    -fx-border-color: #269CDF;
+    -fx-border-width: 1px;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-padding: 5px 20px 5px 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+    -fx-background-color: white;
+}
+
+.author {
+    -fx-text-fill: #269CDF;
+    -fx-font-size: 16;
+    -fx-font-weight: normal;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+}

@@ -17,4 +17,6 @@ public interface ServerImp extends Remote {
     public boolean register(User user) throws Exception;
 
     public ArrayList<Quiz> getQuizzes() throws Exception;
+
+    public ArrayList<Quiz> search(String label) throws Exception;
 }

@@ -13,6 +13,8 @@ import javafx.scene.layout.VBox;
 public class Home {
 
     @FXML
+    private VBox content;
+    @FXML
     private HBox menu;
     @FXML
     private HBox CardNew;
@@ -28,10 +30,10 @@ public class Home {
     // add card to card view
     public void addCard(Quiz quiz) throws IOException {
         FXMLLoader fxmlLoader = App.lFXML("components/card");
-        VBox cardd = fxmlLoader.load();
+        VBox card = fxmlLoader.load();
         Card controller = fxmlLoader.getController();
         controller.setCard(quiz);
-        CardNew.getChildren().add(cardd);
+        CardNew.getChildren().add(card);
     }
 
     public void addCardRecent(Quiz quiz) throws IOException {
@@ -40,6 +42,11 @@ public class Home {
         Card controller = fxmlLoader.getController();
         controller.setCard(quiz);
         CardRecent.getChildren().add(card);
+    }
+
+    // get content
+    public VBox getContent() {
+        return content;
     }
 
 }

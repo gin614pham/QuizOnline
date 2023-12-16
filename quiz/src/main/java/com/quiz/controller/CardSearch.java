@@ -4,30 +4,29 @@ import com.quiz.model.data.Quiz;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
-public class Card {
-    int id;
+public class CardSearch {
+
+    private int id;
 
     @FXML
-    private Label lab1;
+    private Label author;
 
     @FXML
-    private Label sub;
+    private VBox cradSearch;
+
+    @FXML
+    private Label numQuiz;
 
     @FXML
     private Label title;
 
-    // function handle click
-    @FXML
-    public void handleClick() {
-        System.out.println("clicked on card " + id);
-    }
-
     public void setCard(Quiz quiz) {
         this.id = quiz.getId();
         this.title.setText(quiz.getName());
-        this.sub.setText(quiz.getAuthor());
-        this.lab1.setText(String.valueOf(quiz.getNumQuestions()));
+        this.author.setText(quiz.getAuthor());
+        this.numQuiz.setText(String.valueOf(quiz.getNumQuestions()));
     }
 
     public int getId() {
@@ -36,6 +35,10 @@ public class Card {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void handleClick() {
+        System.out.println("clicked on card " + id);
     }
 
 }
