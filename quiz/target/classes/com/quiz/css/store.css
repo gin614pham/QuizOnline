@@ -1,0 +1,59 @@
+.lable{
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #269CDF;
+    -fx-border-style: solid;
+    -fx-padding: 5px;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: white;
+    -fx-border-color: #269CDF;
+}
+.scroll-bar:vertical *.increment-arrow,
+.scroll-bar:vertical *.decrement-arrow {
+    -fx-background-color: #269CDF;
+    -fx-fill: #269CDF; 
+}
+
+.scroll-bar:vertical .track{
+    -fx-background-color: white;
+}
+
+.scroll-bar:vertical .thumb{
+    -fx-background-color: #269CDF;
+}
+
+.content {
+    -fx-background-color: white;
+    -fx-alignment: center;
+    -fx-padding: 20px;
+}
+
+
+.searchBox {
+    -fx-background-color: white;
+    -fx-text-fill: #269CDF;
+    -fx-border-color: #269CDF;
+    -fx-border-width: 1px;
+    -fx-border-radius: 45px;
+    -fx-background-radius: 45px;
+    -fx-padding: 5px 10px 5px 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+    
+}
+
+.searchInput {
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-font-size: 16;
+    -fx-font-weight: normal;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: left;
+    -fx-text-fill: #269CDF;
+    -fx-prompt-text-fill: #269CDF;
+}
+
+.buttonSreach {
+    -fx-padding: 0 ;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+}
