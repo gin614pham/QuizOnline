@@ -23,3 +23,14 @@
 .content {
     -fx-background-color: white;
 }
+
+.btnAdd {
+    -fx-background-color: white;
+    -fx-border-color: #269CDF;
+    -fx-border-width: 1px;
+    -fx-border-radius: 45px;
+    -fx-background-radius: 45px;
+    -fx-padding: 10px 30px 10px 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+    -fx-text-fill: #269CDF;
+}

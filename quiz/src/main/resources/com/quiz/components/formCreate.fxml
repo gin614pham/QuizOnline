@@ -7,13 +7,12 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="600.0" spacing="5.0" style="-fx-background-color: white;" styleClass="root" stylesheets="@../css/formCreate.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="600.0" spacing="5.0" style="-fx-background-color: white;" styleClass="root" stylesheets="@../css/formCreate.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quiz.controller.FormCreate">
    <children>
-      <TextArea prefHeight="120.0" prefWidth="600.0" styleClass="text_arena" />
+      <TextArea fx:id="quizInput" prefHeight="120.0" prefWidth="600.0" styleClass="text_arena" />
       <RadioButton mnemonicParsing="false" selected="true" styleClass="radio">
          <graphic>
-            <TextField prefHeight="36.0" prefWidth="567.0">
+            <TextField fx:id="answer1" prefHeight="36.0" prefWidth="567.0">
                <padding>
                   <Insets left="20.0" right="20.0" />
                </padding>
@@ -25,17 +24,17 @@
       </RadioButton>
       <RadioButton mnemonicParsing="false" styleClass="radio" toggleGroup="$A">
          <graphic>
-            <TextField prefHeight="36.0" prefWidth="586.0" />
+            <TextField fx:id="answer2" prefHeight="36.0" prefWidth="586.0" />
          </graphic>
       </RadioButton>
       <RadioButton mnemonicParsing="false" styleClass="radio" toggleGroup="$A">
          <graphic>
-            <TextField prefHeight="36.0" prefWidth="561.0" />
+            <TextField fx:id="answer3" prefHeight="36.0" prefWidth="561.0" />
          </graphic>
       </RadioButton>
       <RadioButton mnemonicParsing="false" styleClass="radio" toggleGroup="$A">
          <graphic>
-            <TextField prefHeight="36.0" prefWidth="590.0" />
+            <TextField fx:id="answer4" prefHeight="36.0" prefWidth="590.0" />
          </graphic>
       </RadioButton>
    </children>

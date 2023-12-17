@@ -38,7 +38,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </VBox>
-                  <Button fx:id="addQuiz" mnemonicParsing="false" onAction="#addForm" text="Add Quiz">
+                  <Button fx:id="addQuiz" mnemonicParsing="false" onAction="#addForm" styleClass="btnAdd" text="Add Quiz">
                      <font>
                         <Font size="18.0" />
                      </font>
