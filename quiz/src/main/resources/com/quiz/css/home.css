@@ -17,6 +17,23 @@
     -fx-background-color: #269CDF;
 }
 
+.scroll-bar:vertical {
+    -fx-background-color: white;
+    -fx-border-color: #269CDF;
+}
+.scroll-bar:vertical *.increment-arrow,
+.scroll-bar:vertical *.decrement-arrow {
+    -fx-background-color: #269CDF;
+    -fx-fill: #269CDF; 
+}
+
+.scroll-bar:vertical .track{
+    -fx-background-color: white;
+}
+
+.scroll-bar:vertical .thumb{
+    -fx-background-color: #269CDF;
+}
 
 
 

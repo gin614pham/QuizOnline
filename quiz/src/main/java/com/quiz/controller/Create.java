@@ -20,6 +20,9 @@ public class Create {
     private Label userLabel;
 
     @FXML
+    private Button addQuiz;
+
+    @FXML
     public void create() throws Exception {
         System.out.println("create");
     }

@@ -8,3 +8,18 @@
     -fx-padding: 10px 30px 10px 30px;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
 }
+
+.root {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+    -fx-background-color: white;
+    -fx-border-color: #269CDF;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: solid;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+
+.content {
+    -fx-background-color: white;
+}
