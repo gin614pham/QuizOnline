@@ -1,0 +1,53 @@
+.rootQuiz {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+    -fx-border-color: #269CDF;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.radio-button {
+    -fx-font-size: 14px;
+    -fx-text-fill: #269CDF ; /* Text color */
+}
+
+.radio-button .radio {
+    -fx-background-color: white; /* Unselected background color */
+    -fx-border-color: #269CDF; /* Border color */
+    -fx-border-width: 1px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-padding: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+}
+
+.radio-button .dot {
+    -fx-background-radius: 45px;
+    -fx-padding: 8px;
+}
+
+.radio-button:selected *.dot {
+    -fx-background-color: #269CDF; 
+}
+
+.text-input {
+    -fx-background-color: white;
+    -fx-border-color: #269CDF;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-font-family: Roboto;
+    -fx-text-fill: #269CDF;
+    -fx-font-size: 16;
+    -fx-padding: 5px 10px 5px 10px;
+}
+
+.labelFC {
+    -fx-text-fill: #269CDF;
+    -fx-font-size: 12;
+    -fx-font-family: Roboto;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+}

@@ -63,6 +63,7 @@ public class Quiz implements Serializable {
 
     public void setQuestions(ArrayList<Question> questions) {
         this.questions = questions;
+        this.numQuestions = questions.size();
     }
 
     public void addQuestion(Question question) {

@@ -23,6 +23,8 @@ public class Card {
     @FXML
     private Label title;
 
+    private Quiz quiz;
+
     // function handle click
     @FXML
     public void handleClick() throws IOException {
@@ -30,6 +32,7 @@ public class Card {
         FXMLLoader fxmlLoader = App.lFXML("components/doQuiz");
         VBox form = fxmlLoader.load();
         DoQuiz controller = fxmlLoader.getController();
+        controller.setQuiz(quiz);
         setContent(form);
     }
 
@@ -38,6 +41,7 @@ public class Card {
         this.title.setText(quiz.getName());
         this.sub.setText(quiz.getAuthor());
         this.lab1.setText(String.valueOf(quiz.getNumQuestions()));
+        this.quiz = quiz;
     }
 
     public int getId() {

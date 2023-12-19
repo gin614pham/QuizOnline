@@ -1,8 +1,9 @@
 package com.quiz.model.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Question {
+public class Question implements Serializable {
 
     private int id;
     private int quizId;
