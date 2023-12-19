@@ -9,7 +9,7 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
 }
 
-.root {
+.rootC {
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
     -fx-background-color: white;
     -fx-border-color: #269CDF;
@@ -22,6 +22,8 @@
 
 .content {
     -fx-background-color: white;
+    -fx-alignment: center;
+    -fx-padding: 20px;
 }
 
 .btnAdd {

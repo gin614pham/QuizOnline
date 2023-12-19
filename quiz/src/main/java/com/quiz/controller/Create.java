@@ -59,6 +59,7 @@ public class Create {
         VBox form = fxmlLoader.load();
         FormCreate controller = fxmlLoader.getController();
         list.add(controller);
+        controller.setNum(list.size());
         contentCreate.getChildren().add(form);
     }
 

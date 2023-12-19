@@ -4,6 +4,7 @@ import com.quiz.model.data.Question;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -26,6 +27,9 @@ public class FormCreate {
 
     @FXML
     private TextArea quizInput;
+
+    @FXML
+    private Label labNum;
 
     public Question handleSubmit() {
         // Get text from quizInput TextArea
@@ -50,5 +54,9 @@ public class FormCreate {
         Question question = new Question(-1, -1, questionText, answers, selectedIndex);
 
         return question;
+    }
+
+    public void setNum(int num) {
+        labNum.setText("Question " + num);
     }
 }
