@@ -1,6 +1,5 @@
 package com.quiz.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import com.quiz.App;
@@ -63,7 +62,7 @@ public class Menu {
                 VBox create = fxmlLoader.load();
                 Create Create_controller = fxmlLoader.getController();
                 Create_controller.addForm();
-                setMenu(create);
+                setContent(create);
                 break;
             case "storeBtn":
                 System.out.println("clicked on button: " + id);
@@ -73,7 +72,7 @@ public class Menu {
                 VBox store = fxmlLoader.load();
                 Store controller = fxmlLoader.getController();
                 controller.setData("Store", quizList);
-                setMenu(store);
+                setContent(store);
                 break;
         }
     }
@@ -96,18 +95,18 @@ public class Menu {
         VBox search = fxmlLoader.load();
         Search controller = fxmlLoader.getController();
         controller.setData(input, quizList);
-        setMenu(search);
+        setContent(search);
 
     }
 
-    private void setMenu(VBox search) throws Exception {
+    private void setContent(VBox vbox) throws Exception {
         FXMLLoader homeController = App.lFXML("screen/app/home");
         Parent root = homeController.load();
         Home home = homeController.getController();
         VBox homeContentVBox = home.getContent();
         // clear content of home and add search
         homeContentVBox.getChildren().clear();
-        homeContentVBox.getChildren().add(search);
+        homeContentVBox.getChildren().add(vbox);
         home.setMenu();
         App.setRoot(root);
     }
