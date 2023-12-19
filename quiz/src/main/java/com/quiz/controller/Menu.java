@@ -30,9 +30,6 @@ public class Menu {
     private ImageView searchBtn;
 
     @FXML
-    private Button settingBtn;
-
-    @FXML
     private Button storeBtn;
 
     @FXML
@@ -67,9 +64,6 @@ public class Menu {
                 Create Create_controller = fxmlLoader.getController();
                 Create_controller.addForm();
                 setMenu(create);
-                break;
-            case "settingBtn":
-                System.out.println("clicked on button: " + id);
                 break;
             case "storeBtn":
                 System.out.println("clicked on button: " + id);
