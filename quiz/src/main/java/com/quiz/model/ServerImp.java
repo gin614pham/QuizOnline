@@ -28,5 +28,4 @@ public interface ServerImp extends Remote {
 
     public ArrayList<Quiz> search(int userId, String label) throws Exception;
 
-    public 
 }
