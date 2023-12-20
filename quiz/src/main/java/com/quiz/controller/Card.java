@@ -40,7 +40,7 @@ public class Card {
         this.id = quiz.getId();
         this.title.setText(quiz.getName());
         this.sub.setText(quiz.getAuthor());
-        this.lab1.setText(String.valueOf(quiz.getNumQuestions()));
+        this.lab1.setText(String.valueOf(quiz.getNumQuestions()) + " Questions");
         this.quiz = quiz;
     }
 

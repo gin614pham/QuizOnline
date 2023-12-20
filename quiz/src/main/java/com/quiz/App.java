@@ -11,8 +11,10 @@ import java.io.IOException;
 import java.rmi.Naming;
 
 import com.quiz.controller.Client;
+import com.quiz.controller.Home;
 import com.quiz.model.ClientImp;
 import com.quiz.model.ServerImp;
+import com.quiz.model.data.Quiz;
 import com.quiz.model.data.User;
 
 /**
@@ -47,6 +49,19 @@ public class App extends Application {
         }
     }
 
+    public static void returnHome() throws Exception {
+        FXMLLoader fxmlLoader = lFXML("screen/app/home");
+        Parent root = fxmlLoader.load();
+        Home home = fxmlLoader.getController();
+        home.setMenu();
+        for (Quiz quiz : getServer().getLast10Quizzes()) {
+            home.addCard(quiz);
+            home.addCardRecent(quiz);
+        }
+        setRoot(root);
+
+    }
+
     public static void setRoot(Parent root) throws IOException {
         scene.setRoot(root);
         scene.getWindow().sizeToScene();
@@ -73,6 +88,14 @@ public class App extends Application {
 
     public static void setUser(User user) {
         App.user = user;
+    }
+
+    public static void showDialog(String string, String string2) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(string);
+        alert.setHeaderText(null);
+        alert.setContentText(string2);
+        alert.showAndWait();
     }
 
     public static void main(String[] args) {

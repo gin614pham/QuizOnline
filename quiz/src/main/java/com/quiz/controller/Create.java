@@ -50,7 +50,11 @@ public class Create {
             quiz.setName(name);
             quiz.setIdAuthor(App.getUser().getId());
             try {
-                App.getServer().addQuiz(quiz, getAllForms());
+                if (App.getServer().addQuiz(quiz, getAllForms())) {
+                    // show success dialog
+                    App.showDialog("Success", "Quiz created successfully");
+                    App.returnHome();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

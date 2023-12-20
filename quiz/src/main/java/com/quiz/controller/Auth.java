@@ -49,18 +49,7 @@ public class Auth {
             return;
         }
         App.setUser(auth);
-        FXMLLoader fxmlLoader = App.lFXML("screen/app/home");
-        Parent root = fxmlLoader.load();
-        Home home = fxmlLoader.getController();
-        // create dummy data
-        ArrayList<Quiz> list = App.getServer().getLast10Quizzes();
-        for (Quiz quiz : list) {
-            home.addCard(quiz);
-            home.addCardRecent(quiz);
-        }
-
-        home.setMenu();
-        App.setRoot(root);
+        App.returnHome();
 
     }
 
@@ -81,17 +70,7 @@ public class Auth {
                 return;
             }
             App.setUser(auth);
-            FXMLLoader fxmlLoader = App.lFXML("screen/app/home");
-            Parent root = fxmlLoader.load();
-            Home home = fxmlLoader.getController();
-            // create dummy data
-            ArrayList<Quiz> list = App.getServer().getLast10Quizzes();
-            for (Quiz quiz : list) {
-                home.addCard(quiz);
-                home.addCardRecent(quiz);
-            }
-            home.setMenu();
-            App.setRoot(root);
+            App.returnHome();
         }
     }
 }

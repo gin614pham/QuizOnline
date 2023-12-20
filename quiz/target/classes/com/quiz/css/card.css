@@ -20,7 +20,6 @@
     -fx-border-radius: 45;
     -fx-background-radius: 45;
     -fx-padding: 5px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
     -fx-background-color: white;
 }
 
