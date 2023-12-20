@@ -54,6 +54,7 @@ public class Create {
                     // show success dialog
                     App.showDialog("Success", "Quiz created successfully");
                     App.returnHome();
+                    list.clear();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

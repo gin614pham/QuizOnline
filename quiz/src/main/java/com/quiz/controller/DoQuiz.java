@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.quiz.App;
+import com.quiz.model.data.AnswerQuiz;
 import com.quiz.model.data.Question;
 import com.quiz.model.data.Quiz;
 
@@ -28,11 +29,20 @@ public class DoQuiz {
     private Label idQuiz;
 
     @FXML
-    private void submit() {
+    private void submit() throws Exception {
         System.out.println("submit");
+        ArrayList<AnswerQuiz> answers = new ArrayList<>();
+        for (QuizController controller : list) {
+            answers.add(controller.getAnswer());
+        }
+        for (AnswerQuiz answer : answers) {
+            System.out.println(answer.getIdQuestion() + " " + answer.getSelectedAnswer());
+        }
+        // App.getServer().doQuiz(App.getUser().getId(), quiz.getId(), answers);
     }
 
     private Quiz quiz;
+    private ArrayList<QuizController> list = new ArrayList<>();
 
     public void setQuiz(Quiz quiz, ArrayList<Question> questions) throws IOException {
         this.idQuiz.setText(String.valueOf(quiz.getId()));
@@ -45,6 +55,7 @@ public class DoQuiz {
             QuizController controller = fxmlLoader.getController();
             controller.setQuestion(question);
             contentQuiz.getChildren().add(form);
+            list.add(controller);
         }
     }
 

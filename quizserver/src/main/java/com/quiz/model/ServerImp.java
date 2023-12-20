@@ -2,6 +2,8 @@ package com.quiz.model;
 
 import java.rmi.Remote;
 
+import com.quiz.model.data.Answer;
+import com.quiz.model.data.AnswerQuiz;
 import com.quiz.model.data.Question;
 import com.quiz.model.data.Quiz;
 import com.quiz.model.data.User;
@@ -28,4 +30,6 @@ public interface ServerImp extends Remote {
     public ArrayList<Quiz> search(int userId, String label) throws Exception;
 
     public ArrayList<Question> getQuestionsByQuizId(int quizId) throws Exception;
+
+    public Answer doQuiz(int userId, int quizId, ArrayList<AnswerQuiz> answers) throws Exception;
 }

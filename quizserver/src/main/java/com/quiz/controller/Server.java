@@ -3,9 +3,12 @@ package com.quiz.controller;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.quiz.model.ClientImp;
 import com.quiz.model.ServerImp;
+import com.quiz.model.data.Answer;
+import com.quiz.model.data.AnswerQuiz;
 import com.quiz.model.data.Question;
 import com.quiz.model.data.Quiz;
 import com.quiz.model.data.User;
@@ -99,7 +102,14 @@ public class Server extends UnicastRemoteObject implements ServerImp {
 
         ArrayList<Question> list = new ArrayList<>();
         connect.getQuestionsByQuizId(quizId).forEach((question) -> list.add(question));
+        Collections.shuffle(list);
         return list;
+    }
+
+    @Override
+    public Answer doQuiz(int userId, int quizId, ArrayList<AnswerQuiz> answers) throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'doQuiz'");
     }
 
 }
