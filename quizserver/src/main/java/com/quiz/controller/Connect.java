@@ -3,6 +3,7 @@ package com.quiz.controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -93,15 +94,24 @@ public class Connect {
         return null;
     }
 
-    public boolean addQuiz(Quiz quiz, int id) {
-        try (PreparedStatement pst = conn.prepareStatement("INSERT INTO quiz ( iduser, name) VALUES (?, ?)")) {
-            pst.setInt(1, id);
+    public int addQuiz(Quiz quiz) {
+        try (PreparedStatement pst = conn.prepareStatement("INSERT INTO quiz ( iduser, name) VALUES (?, ?)",
+                Statement.RETURN_GENERATED_KEYS)) {
+            pst.setInt(1, quiz.getIdAuthor());
             pst.setString(2, quiz.getName());
             int result = pst.executeUpdate();
-            return result > 0;
+            // get the id of the inserted quiz
+            if (result == 0) {
+                return -1;
+            }
+            ResultSet rs = pst.getGeneratedKeys();
+            if (!rs.next()) {
+                return -1;
+            }
+            return rs.getInt(1);
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return -1;
         }
     }
 
@@ -191,7 +201,7 @@ public class Connect {
 
     public int getNumQuestionsById(int quizId) {
         int numQuestions = 0;
-        try (PreparedStatement pst = conn.prepareStatement("SELECT COUNT(*) FROM question WHERE quizId = ?")) {
+        try (PreparedStatement pst = conn.prepareStatement("SELECT COUNT(*) FROM question WHERE idquiz = ?")) {
             pst.setInt(1, quizId);
             try (ResultSet rs = pst.executeQuery()) {
                 if (rs.next()) {
@@ -209,8 +219,8 @@ public class Connect {
         try (PreparedStatement pstCheck = conn.prepareStatement("SELECT COUNT(*) FROM quiz WHERE id = ?")) {
             pstCheck.setInt(1, quizId);
             ResultSet rs = pstCheck.executeQuery();
-            if (rs.next() && rs.getInt(1) == 0) {
-                return false; // Quiz does not exist, so cannot add a question
+            if (!rs.next() || rs.getInt(1) == 0) {
+                return false;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -219,12 +229,32 @@ public class Connect {
 
         // Add the question to the quiz
         try (PreparedStatement pst = conn
-                .prepareStatement("INSERT INTO questions (quiz_id, question, answercorrect) VALUES (?, ?, ?)")) {
+                .prepareStatement("INSERT INTO question (idquiz, question, answercorrect) VALUES (?, ?, ?)",
+                        Statement.RETURN_GENERATED_KEYS)) {
             pst.setInt(1, quizId);
             pst.setString(2, question.getQuestion());
             pst.setInt(3, question.getCorrectAnswer());
             int result = pst.executeUpdate();
-            return result > 0;
+            if (result > 0) {
+                try {
+                    ResultSet rs = pst.getGeneratedKeys();
+                    if (rs.next()) {
+                        question.setId(rs.getInt(1));
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    return false;
+                }
+                for (String answer : question.getAnswers()) {
+                    int answerId = addAnswerToQuestion(question.getId(), answer);
+                    if (question.getCorrectAnswer() == question.getAnswers().indexOf(answer)) {
+                        question.setCorrectAnswer(answerId);
+                    }
+                }
+                updateQuestionInQuiz(quizId, question, question.getId());
+                return true;
+            }
+            return false;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -233,7 +263,7 @@ public class Connect {
 
     public boolean deleteQuestionFromQuiz(int quizId, int questionId) {
         try (PreparedStatement pst = conn
-                .prepareStatement("DELETE FROM questions WHERE quiz_id = ? AND id = ?")) {
+                .prepareStatement("DELETE FROM question WHERE idquiz = ? AND id = ?")) {
             pst.setInt(1, quizId);
             pst.setInt(2, questionId);
             int result = pst.executeUpdate();
@@ -247,7 +277,7 @@ public class Connect {
     public boolean updateQuestionInQuiz(int quizId, Question question, int questionId) {
         try (PreparedStatement pst = conn
                 .prepareStatement(
-                        "UPDATE questions SET question = ?, answercorrect = ? WHERE quiz_id = ? AND id = ?")) {
+                        "UPDATE question SET question = ?, answercorrect = ? WHERE idquiz = ? AND id = ?")) {
             pst.setString(1, question.getQuestion());
             pst.setInt(2, question.getCorrectAnswer());
             pst.setInt(3, quizId);
@@ -260,21 +290,28 @@ public class Connect {
         }
     }
 
-    public boolean addOption(int questionId, String content) {
-        String sql = "INSERT INTO options ( question_id, content) VALUES ( ?, ?)";
-        try (PreparedStatement pst = conn.prepareStatement(sql)) {
+    public int addAnswerToQuestion(int questionId, String content) {
+        String sql = "INSERT INTO options ( idquestion, content) VALUES ( ?, ?)";
+        try (PreparedStatement pst = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pst.setInt(1, questionId);
             pst.setString(2, content);
             int result = pst.executeUpdate();
-            return result > 0;
+            if (result > 0) {
+                try (ResultSet rs = pst.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        return rs.getInt(1);
+                    }
+                }
+            }
+            return -1;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return -1;
         }
     }
 
     public boolean deleteOption(int questionId, int optionId) {
-        String sql = "DELETE FROM options WHERE question_id = ? AND id = ?";
+        String sql = "DELETE FROM options WHERE idquestion = ? AND id = ?";
         try (PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setInt(1, questionId);
             pst.setInt(2, optionId);
@@ -287,7 +324,7 @@ public class Connect {
     }
 
     public boolean updateOption(int questionId, int optionId, String content) {
-        String sql = "UPDATE options SET content = ? WHERE question_id = ? AND id = ?";
+        String sql = "UPDATE options SET content = ? WHERE idquestion = ? AND id = ?";
         try (PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setString(1, content);
             pst.setInt(2, questionId);

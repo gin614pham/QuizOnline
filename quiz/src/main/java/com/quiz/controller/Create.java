@@ -4,6 +4,7 @@ import java.util.Optional;
 import java.util.ArrayList;
 
 import com.quiz.App;
+import com.quiz.model.data.Question;
 import com.quiz.model.data.Quiz;
 
 import javafx.fxml.FXML;
@@ -46,9 +47,13 @@ public class Create {
         result.ifPresent(name -> {
             System.out.println("Quiz name: " + name);
             Quiz quiz = new Quiz();
-            getAllForms(quiz);
-            System.out.println("Quiz: " + quiz.getNumQuestions());
-            // Further processing with the provided name here
+            quiz.setName(name);
+            quiz.setIdAuthor(App.getUser().getId());
+            try {
+                App.getServer().addQuiz(quiz, getAllForms());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
     }
 
@@ -63,11 +68,12 @@ public class Create {
         contentCreate.getChildren().add(form);
     }
 
-    private void getAllForms(Quiz quiz) {
-
-        for (FormCreate form : list) {
-            quiz.addQuestion(form.handleSubmit());
+    private ArrayList<Question> getAllForms() {
+        ArrayList<Question> list = new ArrayList<>();
+        for (FormCreate form : this.list) {
+            list.add(form.handleSubmit());
         }
+        return list;
     }
 
 }

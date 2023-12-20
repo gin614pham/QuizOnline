@@ -48,6 +48,7 @@ public class Auth {
         if (auth == null) {
             return;
         }
+        App.setUser(auth);
         FXMLLoader fxmlLoader = App.lFXML("screen/app/home");
         Parent root = fxmlLoader.load();
         Home home = fxmlLoader.getController();
@@ -75,9 +76,11 @@ public class Auth {
         // check if password and confirm password is same
         if (password.getText().equals(confirmText)) {
             // send data to server
-            if (App.getServer().register(emailText, passwordText, nameText) == null) {
+            User auth = App.getServer().register(emailText, passwordText, nameText);
+            if (auth == null) {
                 return;
             }
+            App.setUser(auth);
             FXMLLoader fxmlLoader = App.lFXML("screen/app/home");
             Parent root = fxmlLoader.load();
             Home home = fxmlLoader.getController();

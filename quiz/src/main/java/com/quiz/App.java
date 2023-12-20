@@ -13,6 +13,7 @@ import java.rmi.Naming;
 import com.quiz.controller.Client;
 import com.quiz.model.ClientImp;
 import com.quiz.model.ServerImp;
+import com.quiz.model.data.User;
 
 /**
  * JavaFX App
@@ -21,6 +22,7 @@ public class App extends Application {
 
     private static Scene scene;
     private static ServerImp server;
+    private static User user;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -63,6 +65,14 @@ public class App extends Application {
 
     public static ServerImp getServer() {
         return server;
+    }
+
+    public static User getUser() {
+        return user;
+    }
+
+    public static void setUser(User user) {
+        App.user = user;
     }
 
     public static void main(String[] args) {

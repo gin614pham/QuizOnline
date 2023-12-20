@@ -38,13 +38,13 @@ public class DoQuiz {
         this.titleQuiz.setText(quiz.getName());
         this.contentQuiz.getChildren().clear();
         this.quiz = quiz;
-        for (Question question : quiz.getQuestions()) {
-            FXMLLoader fxmlLoader = App.lFXML("components/quiz");
-            VBox form = fxmlLoader.load();
-            QuizController controller = fxmlLoader.getController();
-            controller.setQuestion(question);
-            contentQuiz.getChildren().add(form);
-        }
+        // for (Question question : quiz.getQuestions()) {
+        // FXMLLoader fxmlLoader = App.lFXML("components/quiz");
+        // VBox form = fxmlLoader.load();
+        // QuizController controller = fxmlLoader.getController();
+        // controller.setQuestion(question);
+        // contentQuiz.getChildren().add(form);
+        // }
     }
 
 }

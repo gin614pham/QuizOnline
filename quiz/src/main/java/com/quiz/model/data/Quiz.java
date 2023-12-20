@@ -1,6 +1,5 @@
 package com.quiz.model.data;
 
-import java.util.ArrayList;
 import java.io.Serializable;
 
 public class Quiz implements Serializable {
@@ -55,6 +54,14 @@ public class Quiz implements Serializable {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public int getIdAuthor() {
+        return idAuthor;
+    }
+
+    public void setIdAuthor(int idAuthor) {
+        this.idAuthor = idAuthor;
     }
 
 }

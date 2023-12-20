@@ -62,4 +62,20 @@ public class Server extends UnicastRemoteObject implements ServerImp {
         return dummyList;
     }
 
+    @Override
+    public boolean addQuiz(Quiz quiz, ArrayList<Question> questions) throws Exception {
+
+        quiz.setId(connect.addQuiz(quiz));
+        if (quiz.getId() == -1) {
+            return false;
+        }
+
+        for (Question question : questions) {
+            if (!connect.addQuestionToQuiz(quiz.getId(), question)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

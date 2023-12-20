@@ -2,6 +2,7 @@ package com.quiz.model;
 
 import java.rmi.Remote;
 
+import com.quiz.model.data.Question;
 import com.quiz.model.data.Quiz;
 import com.quiz.model.data.User;
 
@@ -20,4 +21,6 @@ public interface ServerImp extends Remote {
     public ArrayList<Quiz> getLast10Quizzes() throws Exception;
 
     public ArrayList<Quiz> search(String label) throws Exception;
+
+    public boolean addQuiz(Quiz quiz, ArrayList<Question> questions) throws Exception;
 }
