@@ -26,8 +26,11 @@ public class Store {
     @FXML
     private TextField searchInput;
 
+    private String label;
+
     public void setData(String label, ArrayList<Quiz> list) throws IOException {
         this.userLabel.setText(label);
+        this.label = label;
         contentStore.getChildren().clear();
         for (Quiz quiz : list) {
             FXMLLoader fxmlLoader = App.lFXML("components/cardSearch");
@@ -42,7 +45,7 @@ public class Store {
     public void search() throws Exception {
         String label = searchInput.getText();
         ArrayList<Quiz> list = App.getServer().search(App.getUser().getId(), label);
-        setData(label, list);
+        setData(this.label, list);
     }
 
 }

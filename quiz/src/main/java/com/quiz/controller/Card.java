@@ -28,17 +28,9 @@ public class Card {
     // function handle click
     @FXML
     public void handleClick() throws IOException {
-        System.out.println("clicked on card " + id);
-        System.out.println("quiz: " + quiz);
-        System.out.println("quiz id: " + id);
-        System.out.println("quiz name: " + quiz.getName());
-        System.out.println("quiz author: " + quiz.getAuthor());
-        System.out.println("quiz numQuestions: " + quiz.getNumQuestions());
-        System.out.println("author id: " + quiz.getIdAuthor());
-        System.out.println("created at: " + quiz.getDateCreated());
-        FXMLLoader fxmlLoader = App.lFXML("components/doQuiz");
+        FXMLLoader fxmlLoader = App.lFXML("components/quizInfo");
         VBox form = fxmlLoader.load();
-        DoQuiz controller = fxmlLoader.getController();
+        QuizInfo controller = fxmlLoader.getController();
         controller.setQuiz(quiz);
         setContent(form);
     }

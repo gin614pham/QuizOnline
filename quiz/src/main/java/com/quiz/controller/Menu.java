@@ -55,7 +55,7 @@ public class Menu {
                 fxmlLoader = App.lFXML("components/store");
                 VBox store = fxmlLoader.load();
                 Store controller = fxmlLoader.getController();
-                controller.setData("Store", quizList);
+                controller.setData("Store: " + App.getUser().getName(), quizList);
                 setContent(store);
                 break;
 

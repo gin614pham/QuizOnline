@@ -1,8 +1,13 @@
 package com.quiz.controller;
 
+import java.io.IOException;
+
+import com.quiz.App;
 import com.quiz.model.data.Quiz;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
@@ -22,11 +27,14 @@ public class CardSearch {
     @FXML
     private Label title;
 
+    private Quiz quiz;
+
     public void setCard(Quiz quiz) {
         this.id = quiz.getId();
         this.title.setText(quiz.getName());
         this.author.setText(quiz.getAuthor());
         this.numQuiz.setText(String.valueOf(quiz.getNumQuestions()) + " Questions");
+        this.quiz = quiz;
     }
 
     public int getId() {
@@ -37,8 +45,23 @@ public class CardSearch {
         this.id = id;
     }
 
-    public void handleClick() {
-        System.out.println("clicked on card " + id);
+    public void handleClick() throws IOException {
+        FXMLLoader fxmlLoader = App.lFXML("components/quizInfo");
+        VBox form = fxmlLoader.load();
+        QuizInfo controller = fxmlLoader.getController();
+        controller.setQuiz(quiz);
+        setContent(form);
     }
 
+    private void setContent(VBox content) throws IOException {
+        FXMLLoader homeController = App.lFXML("screen/app/home");
+        Parent root = homeController.load();
+        Home home = homeController.getController();
+        VBox homeContentVBox = home.getContent();
+        // clear content of home and add search
+        homeContentVBox.getChildren().clear();
+        homeContentVBox.getChildren().add(content);
+        home.setMenu();
+        App.setRoot(root);
+    }
 }

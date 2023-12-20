@@ -1,0 +1,73 @@
+
+.headerText {
+    -fx-text-fill: #269CDF;
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: center;
+}
+
+.textInfo {
+    -fx-text-fill: #269CDF;
+    -fx-font-size: 16;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+}
+
+.dateInfo {
+    -fx-text-fill: #269CDF;
+    -fx-font-size: 16;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+}
+
+.buttonQuiz {
+    -fx-background-color: #269CDF;
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+    -fx-padding: 10px 20px 10px 20px;
+    -fx-border-color: #269CDF;
+    -fx-border-width: 1px;
+    -fx-border-radius: 45px;
+    -fx-background-radius: 45px;
+} 
+
+.buttonEdit {
+    -fx-background-color: white;
+    -fx-text-fill: #269CDF;
+    -fx-font-size: 16;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+    -fx-padding: 10px 20px 10px 20px;
+    -fx-border-color: #269CDF;
+    -fx-border-width: 1px;
+    -fx-border-radius: 45px;
+    -fx-background-radius: 45px;
+}
+
+.buttonDelete {
+    -fx-background-color: white;
+    -fx-text-fill: #de2525;
+    -fx-font-size: 16;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+    -fx-padding: 10px 20px 10px 20px;
+    -fx-border-color: #de2525;
+    -fx-border-width: 1px;
+    -fx-border-radius: 45px;
+    -fx-background-radius: 45px;
+}
+
+.separator {
+    -fx-background-color: #269CDF;
+}

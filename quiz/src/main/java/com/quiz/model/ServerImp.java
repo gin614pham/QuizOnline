@@ -27,4 +27,6 @@ public interface ServerImp extends Remote {
     public ArrayList<Quiz> getQuizzesByUserId(int userId) throws Exception;
 
     public ArrayList<Quiz> search(int userId, String label) throws Exception;
+
+    public 
 }
