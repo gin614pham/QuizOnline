@@ -26,7 +26,7 @@ public class CardSearch {
         this.id = quiz.getId();
         this.title.setText(quiz.getName());
         this.author.setText(quiz.getAuthor());
-        this.numQuiz.setText(String.valueOf(quiz.getNumQuestions()));
+        this.numQuiz.setText(String.valueOf(quiz.getNumQuestions()) + " Questions");
     }
 
     public int getId() {

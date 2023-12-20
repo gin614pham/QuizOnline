@@ -8,12 +8,15 @@ public class Quiz implements Serializable {
     int numQuestions;
     String author;
     int idAuthor;
+    String dateCreated;
 
-    public Quiz(int id, String name, int numQuestions, String author) {
+    public Quiz(int id, String name, int numQuestions, String author, int idAuthor, String dateCreated) {
         this.id = id;
         this.name = name;
         this.numQuestions = numQuestions;
         this.author = author;
+        this.idAuthor = idAuthor;
+        this.dateCreated = dateCreated;
     }
 
     public Quiz() {
@@ -22,6 +25,7 @@ public class Quiz implements Serializable {
         numQuestions = 0;
         author = "";
         idAuthor = -1;
+        dateCreated = "";
     }
 
     public int getId() {
@@ -62,5 +66,13 @@ public class Quiz implements Serializable {
 
     public void setIdAuthor(int idAuthor) {
         this.idAuthor = idAuthor;
+    }
+
+    public String getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
     }
 }

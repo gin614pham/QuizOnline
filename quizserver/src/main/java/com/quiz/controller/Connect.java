@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.quiz.model.data.Question;
 import com.quiz.model.data.Quiz;
@@ -148,7 +149,8 @@ public class Connect {
                     String name = rs.getString("name");
                     int numQuestions = getNumQuestionsById(id);
                     String author = getUsernameById(userId);
-                    quizzes.add(new Quiz(id, name, numQuestions, author));
+                    String dateCreated = rs.getDate("created_at").toString();
+                    quizzes.add(new Quiz(id, name, numQuestions, author, userId, dateCreated));
                 }
             }
         } catch (SQLException e) {
@@ -170,8 +172,10 @@ public class Connect {
                     int id = rs.getInt("id");
                     String name = rs.getString("name");
                     int numQuestions = getNumQuestionsById(id);
-                    String author = getUsernameById(rs.getInt("iduser"));
-                    quizzes.add(new Quiz(id, name, numQuestions, author));
+                    int iduser = rs.getInt("iduser");
+                    String author = getUsernameById(iduser);
+                    String dateCreated = rs.getDate("created_at").toString();
+                    quizzes.add(new Quiz(id, name, numQuestions, author, iduser, dateCreated));
                 }
             }
         } catch (SQLException e) {
@@ -196,7 +200,8 @@ public class Connect {
                     String name = rs.getString("name");
                     int numQuestions = getNumQuestionsById(id);
                     String author = getUsernameById(rs.getInt("iduser"));
-                    quizzes.add(new Quiz(id, name, numQuestions, author));
+                    String dateCreated = rs.getDate("created_at").toString();
+                    quizzes.add(new Quiz(id, name, numQuestions, author, iduser, dateCreated));
                 }
             }
         } catch (SQLException e) {
@@ -214,8 +219,10 @@ public class Connect {
                     int id = rs.getInt("id");
                     String name = rs.getString("name");
                     int numQuestions = getNumQuestionsById(id);
-                    String author = getUsernameById(rs.getInt("iduser"));
-                    lastQuizzes.add(new Quiz(id, name, numQuestions, author));
+                    int iduser = rs.getInt("iduser");
+                    String author = getUsernameById(iduser);
+                    String dateCreated = rs.getDate("created_at").toString();
+                    lastQuizzes.add(new Quiz(id, name, numQuestions, author, iduser, dateCreated));
                 }
             }
         } catch (SQLException e) {

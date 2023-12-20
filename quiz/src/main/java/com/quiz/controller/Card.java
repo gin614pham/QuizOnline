@@ -29,6 +29,13 @@ public class Card {
     @FXML
     public void handleClick() throws IOException {
         System.out.println("clicked on card " + id);
+        System.out.println("quiz: " + quiz);
+        System.out.println("quiz id: " + id);
+        System.out.println("quiz name: " + quiz.getName());
+        System.out.println("quiz author: " + quiz.getAuthor());
+        System.out.println("quiz numQuestions: " + quiz.getNumQuestions());
+        System.out.println("author id: " + quiz.getIdAuthor());
+        System.out.println("created at: " + quiz.getDateCreated());
         FXMLLoader fxmlLoader = App.lFXML("components/doQuiz");
         VBox form = fxmlLoader.load();
         DoQuiz controller = fxmlLoader.getController();
