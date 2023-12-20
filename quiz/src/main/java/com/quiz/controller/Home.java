@@ -9,17 +9,26 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class Home {
 
     @FXML
-    private VBox content;
-    @FXML
-    private HBox menu;
-    @FXML
     private HBox CardNew;
+
     @FXML
     private HBox CardRecent;
+
+    @FXML
+    private VBox content;
+
+    @FXML
+    private HBox menu;
+
+    @FXML
+    private VBox root;
+
+    Stage stage;
 
     public void setMenu() throws IOException {
         FXMLLoader fxmlLoader = App.lFXML("components/menu");

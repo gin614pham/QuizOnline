@@ -1,5 +1,6 @@
 package com.quiz.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.quiz.App;
@@ -10,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -55,6 +57,26 @@ public class Menu {
                 Store controller = fxmlLoader.getController();
                 controller.setData("Store", quizList);
                 setContent(store);
+                break;
+
+            default:
+                System.out.println("Button not found" + id);
+                break;
+        }
+    }
+
+    @FXML
+    private void handleMenuItemClick(ActionEvent event) throws Exception {
+        // get id from menu item
+        MenuItem clickedItem = (MenuItem) event.getSource();
+        String menuItemId = clickedItem.getId();
+
+        switch (menuItemId) {
+            case "logout":
+                App.logout();
+                break;
+            default:
+                System.out.println("Button not found" + menuItemId);
                 break;
         }
     }

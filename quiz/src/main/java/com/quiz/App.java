@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,26 +18,33 @@ import com.quiz.model.ServerImp;
 import com.quiz.model.data.Quiz;
 import com.quiz.model.data.User;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     private static Scene scene;
     private static ServerImp server;
     private static User user;
+    private static ClientImp client;
 
     @Override
     public void start(Stage stage) throws IOException {
 
         try {
             server = (ServerImp) Naming.lookup("//localhost/Quiz");
-            ClientImp client = new Client();
+            client = new Client();
             server.registerClient(client);
             scene = new Scene(loadFXML("screen/auth/login"));
             stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
+
+            stage.setOnCloseRequest(e -> {
+                e.consume();
+                try {
+                    exitApp(stage);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -46,6 +54,19 @@ public class App extends Application {
 
             alert.showAndWait();
 
+        }
+    }
+
+    public static void exitApp(Stage stage) throws Exception {
+        // alert to confirm exit
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit Confirmation");
+        alert.setContentText("Are you sure you want to exit?");
+        alert.setHeaderText("You are about to exit the application.");
+
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            server.unregisterClient(client);
+            stage.close();
         }
     }
 
@@ -96,6 +117,11 @@ public class App extends Application {
         alert.setHeaderText(null);
         alert.setContentText(string2);
         alert.showAndWait();
+    }
+
+    public static void logout() throws Exception {
+        user = new User();
+        setRoot(loadFXML("screen/auth/login"));
     }
 
     public static void main(String[] args) {
