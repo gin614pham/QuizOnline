@@ -1,14 +1,13 @@
 package com.quiz.model.data;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Quiz implements Serializable {
     int id;
     String name;
     int numQuestions;
     String author;
-    ArrayList<Question> questions;
+    int idAuthor;
 
     public Quiz(int id, String name, int numQuestions, String author) {
         this.id = id;
@@ -22,7 +21,7 @@ public class Quiz implements Serializable {
         name = "";
         numQuestions = 0;
         author = "";
-        questions = new ArrayList<>();
+        idAuthor = -1;
     }
 
     public int getId() {
@@ -55,19 +54,5 @@ public class Quiz implements Serializable {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public ArrayList<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(ArrayList<Question> questions) {
-        this.questions = questions;
-        this.numQuestions = questions.size();
-    }
-
-    public void addQuestion(Question question) {
-        questions.add(question);
-        numQuestions++;
     }
 }

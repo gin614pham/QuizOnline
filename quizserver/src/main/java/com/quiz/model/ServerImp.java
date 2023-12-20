@@ -12,11 +12,11 @@ public interface ServerImp extends Remote {
 
     public void unregisterClient(ClientImp client) throws Exception;
 
-    public boolean login(User user) throws Exception;
+    public User login(String email, String password) throws Exception;
 
-    public boolean register(User user) throws Exception;
+    public User register(String email, String password, String name) throws Exception;
 
-    public ArrayList<Quiz> getQuizzes() throws Exception;
+    public ArrayList<Quiz> getLast10Quizzes() throws Exception;
 
     public ArrayList<Quiz> search(String label) throws Exception;
 }

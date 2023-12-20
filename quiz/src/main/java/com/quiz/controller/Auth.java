@@ -40,19 +40,19 @@ public class Auth {
     @FXML
     private void login() throws Exception {
         // get data from text field and password field
-        User auth = new User();
-        auth.setEmail(email.getText());
-        auth.setPassword(password.getText());
+        String emailText = email.getText();
+        String passwordText = password.getText();
 
         // send data to server
-        if (!App.getServer().login(auth)) {
+        User auth = App.getServer().login(emailText, passwordText);
+        if (auth == null) {
             return;
         }
         FXMLLoader fxmlLoader = App.lFXML("screen/app/home");
         Parent root = fxmlLoader.load();
         Home home = fxmlLoader.getController();
         // create dummy data
-        ArrayList<Quiz> list = App.getServer().getQuizzes();
+        ArrayList<Quiz> list = App.getServer().getLast10Quizzes();
         for (Quiz quiz : list) {
             home.addCard(quiz);
             home.addCardRecent(quiz);
@@ -66,27 +66,23 @@ public class Auth {
     // create function Register
     @FXML
     private void register() throws Exception {
-        User auth = new User();
-        auth.setEmail(email.getText());
-        auth.setName(name.getText());
-        auth.setPassword(password.getText());
+        String emailText = email.getText();
+        String nameText = name.getText();
+        String passwordText = password.getText();
         // get data from text field and password field
         String confirmText = confirm.getText();
 
         // check if password and confirm password is same
         if (password.getText().equals(confirmText)) {
             // send data to server
-            if (!App.getServer().register(auth)) {
-                return;
-            }
-            if (!App.getServer().login(auth)) {
+            if (App.getServer().register(emailText, passwordText, nameText) == null) {
                 return;
             }
             FXMLLoader fxmlLoader = App.lFXML("screen/app/home");
             Parent root = fxmlLoader.load();
             Home home = fxmlLoader.getController();
             // create dummy data
-            ArrayList<Quiz> list = App.getServer().getQuizzes();
+            ArrayList<Quiz> list = App.getServer().getLast10Quizzes();
             for (Quiz quiz : list) {
                 home.addCard(quiz);
                 home.addCardRecent(quiz);

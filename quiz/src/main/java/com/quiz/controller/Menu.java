@@ -46,7 +46,7 @@ public class Menu {
                 root = fxmlLoader.load();
                 Home home = fxmlLoader.getController();
                 // create dummy data
-                ArrayList<Quiz> list = App.getServer().getQuizzes();
+                ArrayList<Quiz> list = App.getServer().getLast10Quizzes();
                 for (Quiz quiz : list) {
                     home.addCard(quiz);
                     home.addCardRecent(quiz);

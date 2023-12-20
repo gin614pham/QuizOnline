@@ -3,9 +3,7 @@ package com.quiz.controller;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import com.quiz.controller.database.Auth;
 import com.quiz.model.ClientImp;
 import com.quiz.model.ServerImp;
 import com.quiz.model.data.Question;
@@ -14,11 +12,11 @@ import com.quiz.model.data.User;
 
 public class Server extends UnicastRemoteObject implements ServerImp {
     private ArrayList<ClientImp> clients;
-    private Auth auth;
+    private Connect connect;
 
     public Server() throws RemoteException {
         clients = new ArrayList<>();
-        auth = new Auth();
+        connect = new Connect();
     }
 
     public void registerClient(ClientImp client) throws Exception {
@@ -33,51 +31,33 @@ public class Server extends UnicastRemoteObject implements ServerImp {
     }
 
     @Override
-    public boolean login(User user) throws Exception {
-        System.out.println("Login: " + user.getEmail() + ", " + user.getPassword());
-        User userLogin = auth.login(user.getEmail(), user.getPassword());
-        return userLogin != null;
+    public User login(String email, String password) throws Exception {
+        System.out.println("Login: " + email + ", " + password);
+        User userLogin = connect.login(email, password);
+        return userLogin;
     }
 
     @Override
-    public boolean register(User user) throws Exception {
-        System.out.println("Register: " + user.getEmail() + ", " + user.getPassword() + ", " + user.getName());
-        return auth.register(user);
+    public User register(String email, String password, String name) throws Exception {
+        System.out.println("Register: " + email + ", " + password + ", " + name);
+        if (connect.register(email, password, name)) {
+            return connect.login(email, password);
+        }
+        return null;
     }
 
     @Override
-    public ArrayList<Quiz> getQuizzes() throws Exception {
-        ArrayList<Question> dummyListQuestions = new ArrayList<Question>();
-        dummyListQuestions.add(new Question(1, 1, "Question 1",
-                new ArrayList<String>(Arrays.asList("Answer 1", "Answer 2", "Answer 3", "Answer 4")), 1));
-        dummyListQuestions.add(new Question(2, 1, "Question 2",
-                new ArrayList<String>(Arrays.asList("Answer 1", "Answer 2", "Answer 3", "Answer 4")), 1));
-        Quiz dummyQuiz = new Quiz(1, "Quiz 1", 10, "admin");
-        dummyQuiz.setQuestions(dummyListQuestions);
-        ArrayList<Quiz> dummyList = new ArrayList<Quiz>();
-        dummyList.add(dummyQuiz);
-        dummyList.add(dummyQuiz);
-        dummyList.add(dummyQuiz);
-        dummyList.add(dummyQuiz);
-        dummyList.add(dummyQuiz);
-        return dummyList;
+    public ArrayList<Quiz> getLast10Quizzes() throws Exception {
+
+        ArrayList<Quiz> list = new ArrayList<>();
+        connect.getLast10Quizzes().forEach((quiz) -> list.add(quiz));
+        return list;
     }
 
     @Override
     public ArrayList<Quiz> search(String label) throws Exception {
-        ArrayList<Question> dummyListQuestions = new ArrayList<Question>();
-        dummyListQuestions.add(new Question(1, 1, "Question 1",
-                new ArrayList<String>(Arrays.asList("Answer 1", "Answer 2", "Answer 3", "Answer 4")), 1));
-        dummyListQuestions.add(new Question(2, 1, "Question 2",
-                new ArrayList<String>(Arrays.asList("Answer 1", "Answer 2", "Answer 3", "Answer 4")), 1));
-        Quiz dummyQuiz = new Quiz(1, "Quiz 1", 10, "admin");
-        dummyQuiz.setQuestions(dummyListQuestions);
+
         ArrayList<Quiz> dummyList = new ArrayList<Quiz>();
-        dummyList.add(dummyQuiz);
-        dummyList.add(dummyQuiz);
-        dummyList.add(dummyQuiz);
-        dummyList.add(dummyQuiz);
-        dummyList.add(dummyQuiz);
 
         return dummyList;
     }
