@@ -57,9 +57,9 @@ public class Server extends UnicastRemoteObject implements ServerImp {
     @Override
     public ArrayList<Quiz> search(String label) throws Exception {
 
-        ArrayList<Quiz> dummyList = new ArrayList<Quiz>();
+        ArrayList<Quiz> list = connect.searchQuiz(label);
 
-        return dummyList;
+        return list;
     }
 
     @Override
@@ -76,6 +76,22 @@ public class Server extends UnicastRemoteObject implements ServerImp {
             }
         }
         return true;
+    }
+
+    @Override
+    public ArrayList<Quiz> getQuizzesByUserId(int userId) throws Exception {
+
+        ArrayList<Quiz> list = new ArrayList<>();
+        connect.getQuizzesByUserId(userId).forEach((quiz) -> list.add(quiz));
+        return list;
+    }
+
+    @Override
+    public ArrayList<Quiz> search(int userId, String label) throws Exception {
+
+        ArrayList<Quiz> list = new ArrayList<>();
+        connect.searchQuizByIdUser(userId, label).forEach((quiz) -> list.add(quiz));
+        return list;
     }
 
 }

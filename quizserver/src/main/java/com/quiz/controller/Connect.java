@@ -180,6 +180,31 @@ public class Connect {
         return quizzes;
     }
 
+    public ArrayList<Quiz> searchQuizByIdUser(int iduser, String search) {
+        ArrayList<Quiz> quizzes = new ArrayList<>();
+        try (PreparedStatement pst = conn.prepareStatement(
+                "SELECT * FROM quiz WHERE iduser = ? AND (CAST(id AS VARCHAR(10)) LIKE ? OR name LIKE ?)")) {
+
+            pst.setInt(1, iduser);
+            String searchPattern = "%" + search + "%";
+            pst.setString(2, searchPattern);
+            pst.setString(3, searchPattern);
+
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    String name = rs.getString("name");
+                    int numQuestions = getNumQuestionsById(id);
+                    String author = getUsernameById(rs.getInt("iduser"));
+                    quizzes.add(new Quiz(id, name, numQuestions, author));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return quizzes;
+    }
+
     public ArrayList<Quiz> getLast10Quizzes() {
         ArrayList<Quiz> lastQuizzes = new ArrayList<>();
         try (PreparedStatement pst = conn.prepareStatement(

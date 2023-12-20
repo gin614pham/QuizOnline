@@ -36,28 +36,12 @@ public class Menu {
         // get id from button
         String id = ((Button) event.getSource()).getId();
         FXMLLoader fxmlLoader = null;
-        Parent root = null;
         // handle click
         switch (id) {
             case "homeBtn":
-                System.out.println("clicked on button: " + id);
-
-                fxmlLoader = App.lFXML("screen/app/home");
-                root = fxmlLoader.load();
-                Home home = fxmlLoader.getController();
-                // create dummy data
-                ArrayList<Quiz> list = App.getServer().getLast10Quizzes();
-                for (Quiz quiz : list) {
-                    home.addCard(quiz);
-                    home.addCardRecent(quiz);
-                }
-
-                home.setMenu();
-                App.setRoot(root);
+                App.returnHome();
                 break;
             case "createBtn":
-                System.out.println("clicked on button: " + id);
-
                 fxmlLoader = App.lFXML("components/create");
                 VBox create = fxmlLoader.load();
                 Create Create_controller = fxmlLoader.getController();
@@ -65,9 +49,7 @@ public class Menu {
                 setContent(create);
                 break;
             case "storeBtn":
-                System.out.println("clicked on button: " + id);
-                ArrayList<Quiz> quizList = App.getServer().search("");
-
+                ArrayList<Quiz> quizList = App.getServer().getQuizzesByUserId(App.getUser().getId());
                 fxmlLoader = App.lFXML("components/store");
                 VBox store = fxmlLoader.load();
                 Store controller = fxmlLoader.getController();
@@ -79,15 +61,11 @@ public class Menu {
 
     @FXML
     private void search() throws Exception {
-        // get input from text field
         String input = searchInput.getText();
-        // check if input is empty
         if (input.isEmpty()) {
             return;
         }
-        // handle click
-        System.out.println("Search: " + input);
-        // dummy array of quiz
+
         ArrayList<Quiz> quizList = App.getServer().search(input);
 
         // set content to search component
