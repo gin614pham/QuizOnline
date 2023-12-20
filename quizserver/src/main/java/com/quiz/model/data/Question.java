@@ -8,10 +8,10 @@ public class Question implements Serializable {
     private int id;
     private int quizId;
     private String question;
-    private ArrayList<String> answers;
+    private ArrayList<Option> answers;
     private int correctAnswer;
 
-    public Question(int id, int quizId, String question, ArrayList<String> answers, int correctAnswer) {
+    public Question(int id, int quizId, String question, ArrayList<Option> answers, int correctAnswer) {
         this.id = id;
         this.quizId = quizId;
         this.question = question;
@@ -47,11 +47,11 @@ public class Question implements Serializable {
         this.question = question;
     }
 
-    public ArrayList<String> getAnswers() {
+    public ArrayList<Option> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(ArrayList<String> answers) {
+    public void setAnswers(ArrayList<Option> answers) {
         this.answers = answers;
     }
 

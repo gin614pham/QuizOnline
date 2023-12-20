@@ -1,5 +1,6 @@
 package com.quiz.controller;
 
+import com.quiz.model.data.Option;
 import com.quiz.model.data.Question;
 import java.util.ArrayList;
 
@@ -38,17 +39,11 @@ public class FormCreate {
         // get index of selected radio button
         int selectedIndex = A.getToggles().indexOf(A.getSelectedToggle());
         // Get the selected radio button from the ToggleGroup
-        ArrayList<String> answers = new ArrayList<>();
-        answers.add(answer1.getText().trim());
-        answers.add(answer2.getText().trim());
-        answers.add(answer3.getText().trim());
-        answers.add(answer4.getText().trim());
-
-        System.out.println("Question: " + questionText + "\nAnswer: " + selectedIndex);
-        System.out.println("Answer 1: " + answers.get(0));
-        System.out.println("Answer 2: " + answers.get(1));
-        System.out.println("Answer 3: " + answers.get(2));
-        System.out.println("Answer 4: " + answers.get(3));
+        ArrayList<Option> answers = new ArrayList<>();
+        answers.add(new Option(-1, answer1.getText().trim()));
+        answers.add(new Option(-1, answer2.getText().trim()));
+        answers.add(new Option(-1, answer3.getText().trim()));
+        answers.add(new Option(-1, answer4.getText().trim()));
 
         // Create a new Question object
         Question question = new Question(-1, -1, questionText, answers, selectedIndex);

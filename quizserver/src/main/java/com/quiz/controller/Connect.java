@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.quiz.model.data.Option;
 import com.quiz.model.data.Question;
 import com.quiz.model.data.Quiz;
 import com.quiz.model.data.User;
@@ -277,8 +278,8 @@ public class Connect {
                     e.printStackTrace();
                     return false;
                 }
-                for (String answer : question.getAnswers()) {
-                    int answerId = addAnswerToQuestion(question.getId(), answer);
+                for (Option answer : question.getAnswers()) {
+                    int answerId = addAnswerToQuestion(question.getId(), answer.getContent());
                     if (question.getCorrectAnswer() == question.getAnswers().indexOf(answer)) {
                         question.setCorrectAnswer(answerId);
                     }
@@ -320,6 +321,40 @@ public class Connect {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public ArrayList<Question> getQuestionsByQuizId(int quizId) {
+        ArrayList<Question> questions = new ArrayList<>();
+        try (PreparedStatement pst = conn.prepareStatement("SELECT * FROM question WHERE idquiz = ?")) {
+            pst.setInt(1, quizId);
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    String question = rs.getString("question");
+                    int correctAnswer = rs.getInt("answercorrect");
+                    ArrayList<Option> answers = getAnswersByQuestionId(id);
+                    questions.add(new Question(id, quizId, question, answers, correctAnswer));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return questions;
+    }
+
+    public ArrayList<Option> getAnswersByQuestionId(int questionId) {
+        ArrayList<Option> answers = new ArrayList<>();
+        try (PreparedStatement pst = conn.prepareStatement("SELECT content FROM options WHERE idquestion = ?")) {
+            pst.setInt(1, questionId);
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    answers.add(new Option(rs.getInt("id"), rs.getString("content")));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return answers;
     }
 
     public int addAnswerToQuestion(int questionId, String content) {

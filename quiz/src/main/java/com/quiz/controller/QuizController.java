@@ -40,10 +40,10 @@ public class QuizController {
     public void setQuestion(Question question) {
         this.numQ.setText(String.valueOf(question.getId()));
         this.quiz.setText(question.getQuestion());
-        this.answerQ1.setText(question.getAnswers().get(0));
-        this.answerQ2.setText(question.getAnswers().get(1));
-        this.answerQ3.setText(question.getAnswers().get(2));
-        this.answerQ4.setText(question.getAnswers().get(3));
+        this.answerQ1.setText(question.getAnswers().get(0).getContent());
+        this.answerQ2.setText(question.getAnswers().get(1).getContent());
+        this.answerQ3.setText(question.getAnswers().get(2).getContent());
+        this.answerQ4.setText(question.getAnswers().get(3).getContent());
         this.question = question;
     }
 

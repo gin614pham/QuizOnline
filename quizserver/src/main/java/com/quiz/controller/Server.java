@@ -94,4 +94,12 @@ public class Server extends UnicastRemoteObject implements ServerImp {
         return list;
     }
 
+    @Override
+    public ArrayList<Question> getQuestionsByQuizId(int quizId) throws Exception {
+
+        ArrayList<Question> list = new ArrayList<>();
+        connect.getQuestionsByQuizId(quizId).forEach((question) -> list.add(question));
+        return list;
+    }
+
 }
