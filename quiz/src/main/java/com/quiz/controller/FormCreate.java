@@ -33,16 +33,16 @@ public class FormCreate {
 
     public Question handleSubmit() {
         // Get text from quizInput TextArea
-        String questionText = quizInput.getText();
+        String questionText = quizInput.getText().trim();
 
         // get index of selected radio button
         int selectedIndex = A.getToggles().indexOf(A.getSelectedToggle());
         // Get the selected radio button from the ToggleGroup
         ArrayList<String> answers = new ArrayList<>();
-        answers.add(answer1.getText());
-        answers.add(answer2.getText());
-        answers.add(answer3.getText());
-        answers.add(answer4.getText());
+        answers.add(answer1.getText().trim());
+        answers.add(answer2.getText().trim());
+        answers.add(answer3.getText().trim());
+        answers.add(answer4.getText().trim());
 
         System.out.println("Question: " + questionText + "\nAnswer: " + selectedIndex);
         System.out.println("Answer 1: " + answers.get(0));
@@ -54,6 +54,25 @@ public class FormCreate {
         Question question = new Question(-1, -1, questionText, answers, selectedIndex);
 
         return question;
+    }
+
+    public boolean isQuestionEmpty() {
+        if (quizInput.getText().trim().isEmpty()) {
+            return true;
+        }
+        if (answer1.getText().trim().isEmpty()) {
+            return true;
+        }
+        if (answer2.getText().trim().isEmpty()) {
+            return true;
+        }
+        if (answer3.getText().trim().isEmpty()) {
+            return true;
+        }
+        if (answer4.getText().trim().isEmpty()) {
+            return true;
+        }
+        return false;
     }
 
     public void setNum(int num) {

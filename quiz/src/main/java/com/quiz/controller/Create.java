@@ -75,6 +75,9 @@ public class Create {
     private ArrayList<Question> getAllForms() {
         ArrayList<Question> list = new ArrayList<>();
         for (FormCreate form : this.list) {
+            if (form.isQuestionEmpty()) {
+                continue;
+            }
             list.add(form.handleSubmit());
         }
         return list;
