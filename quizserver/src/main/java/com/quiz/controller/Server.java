@@ -5,6 +5,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.quiz.controller.database.Auth;
 import com.quiz.model.ClientImp;
 import com.quiz.model.ServerImp;
 import com.quiz.model.data.Question;
@@ -13,9 +14,11 @@ import com.quiz.model.data.User;
 
 public class Server extends UnicastRemoteObject implements ServerImp {
     private ArrayList<ClientImp> clients;
+    private Auth auth;
 
     public Server() throws RemoteException {
         clients = new ArrayList<>();
+        auth = new Auth();
     }
 
     public void registerClient(ClientImp client) throws Exception {
@@ -32,13 +35,14 @@ public class Server extends UnicastRemoteObject implements ServerImp {
     @Override
     public boolean login(User user) throws Exception {
         System.out.println("Login: " + user.getEmail() + ", " + user.getPassword());
-        return true;
+        User userLogin = auth.login(user.getEmail(), user.getPassword());
+        return userLogin != null;
     }
 
     @Override
     public boolean register(User user) throws Exception {
         System.out.println("Register: " + user.getEmail() + ", " + user.getPassword() + ", " + user.getName());
-        return true;
+        return auth.register(user);
     }
 
     @Override

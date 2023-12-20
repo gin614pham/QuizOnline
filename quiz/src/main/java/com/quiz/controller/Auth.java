@@ -45,7 +45,9 @@ public class Auth {
         auth.setPassword(password.getText());
 
         // send data to server
-        App.getServer().login(auth);
+        if (!App.getServer().login(auth)) {
+            return;
+        }
         FXMLLoader fxmlLoader = App.lFXML("screen/app/home");
         Parent root = fxmlLoader.load();
         Home home = fxmlLoader.getController();
@@ -74,7 +76,23 @@ public class Auth {
         // check if password and confirm password is same
         if (password.getText().equals(confirmText)) {
             // send data to server
-            App.getServer().register(auth);
+            if (!App.getServer().register(auth)) {
+                return;
+            }
+            if (!App.getServer().login(auth)) {
+                return;
+            }
+            FXMLLoader fxmlLoader = App.lFXML("screen/app/home");
+            Parent root = fxmlLoader.load();
+            Home home = fxmlLoader.getController();
+            // create dummy data
+            ArrayList<Quiz> list = App.getServer().getQuizzes();
+            for (Quiz quiz : list) {
+                home.addCard(quiz);
+                home.addCardRecent(quiz);
+            }
+            home.setMenu();
+            App.setRoot(root);
         }
     }
 }
