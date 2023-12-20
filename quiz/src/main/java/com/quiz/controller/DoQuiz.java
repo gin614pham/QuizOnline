@@ -1,6 +1,7 @@
 package com.quiz.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.quiz.App;
 import com.quiz.model.data.Question;
@@ -33,18 +34,18 @@ public class DoQuiz {
 
     private Quiz quiz;
 
-    public void setQuiz(Quiz quiz) throws IOException {
+    public void setQuiz(Quiz quiz, ArrayList<Question> questions) throws IOException {
         this.idQuiz.setText(String.valueOf(quiz.getId()));
         this.titleQuiz.setText(quiz.getName());
         this.contentQuiz.getChildren().clear();
         this.quiz = quiz;
-        // for (Question question : quiz.getQuestions()) {
-        // FXMLLoader fxmlLoader = App.lFXML("components/quiz");
-        // VBox form = fxmlLoader.load();
-        // QuizController controller = fxmlLoader.getController();
-        // controller.setQuestion(question);
-        // contentQuiz.getChildren().add(form);
-        // }
+        for (Question question : questions) {
+            FXMLLoader fxmlLoader = App.lFXML("components/quiz");
+            VBox form = fxmlLoader.load();
+            QuizController controller = fxmlLoader.getController();
+            controller.setQuestion(question);
+            contentQuiz.getChildren().add(form);
+        }
     }
 
 }

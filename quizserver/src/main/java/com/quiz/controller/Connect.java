@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.quiz.model.data.Option;
 import com.quiz.model.data.Question;
@@ -344,7 +343,7 @@ public class Connect {
 
     public ArrayList<Option> getAnswersByQuestionId(int questionId) {
         ArrayList<Option> answers = new ArrayList<>();
-        try (PreparedStatement pst = conn.prepareStatement("SELECT content FROM options WHERE idquestion = ?")) {
+        try (PreparedStatement pst = conn.prepareStatement("SELECT * FROM options WHERE idquestion = ?")) {
             pst.setInt(1, questionId);
             try (ResultSet rs = pst.executeQuery()) {
                 while (rs.next()) {

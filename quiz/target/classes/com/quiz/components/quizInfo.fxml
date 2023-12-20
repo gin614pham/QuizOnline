@@ -33,11 +33,11 @@
                   <Separator prefWidth="200.0" />
                   <VBox alignment="TOP_CENTER" prefWidth="100.0">
                      <children>
-                        <Button fx:id="btnDoQuiz" mnemonicParsing="false" styleClass="buttonQuiz" text="Start Quiz" />
+                        <Button fx:id="btnDoQuiz" mnemonicParsing="false" onAction="#handleDoQuiz" styleClass="buttonQuiz" text="Start Quiz" />
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <Button fx:id="btnUpdate" mnemonicParsing="false" styleClass="buttonEdit" text="Edit" />
-                              <Button fx:id="btnDelete" mnemonicParsing="false" styleClass="buttonDelete" text="Delete" />
+                              <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#handleUpdate" styleClass="buttonEdit" text="Edit" />
+                              <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#handleDelete" styleClass="buttonDelete" text="Delete" />
                            </children>
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
