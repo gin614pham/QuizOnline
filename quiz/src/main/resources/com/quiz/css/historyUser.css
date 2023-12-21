@@ -1,0 +1,10 @@
+
+
+.historyHeader {
+    -fx-text-fill: #269CDF;
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: center;
+    -fx-padding: 20px;
+}

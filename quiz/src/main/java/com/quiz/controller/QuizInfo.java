@@ -2,6 +2,7 @@ package com.quiz.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import com.quiz.App;
 import com.quiz.model.data.Answer;
@@ -11,7 +12,9 @@ import com.quiz.model.data.Quiz;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
@@ -52,6 +55,9 @@ public class QuizInfo {
     @FXML
     private Label historyLabel;
 
+    @FXML
+    private Label noHistory;
+
     private Quiz quiz;
 
     public void setQuiz(Quiz quiz) throws Exception {
@@ -67,7 +73,20 @@ public class QuizInfo {
     }
 
     public void setHistory(ArrayList<Answer> list) throws IOException {
+        if (list.size() == 0) {
+            noHistory.setVisible(true);
+            noHistory.setText("No History");
+            historyQuiz.setVisible(false);
+            return;
+        }
         for (Answer a : list) {
+            if (list.indexOf(a) == 0) {
+                FXMLLoader fxmlLoader = App.lFXML("components/historyCard");
+                HBox root = fxmlLoader.load();
+                HistoryCard controller = fxmlLoader.getController();
+                controller.setTitle();
+                historyQuiz.getItems().add(root);
+            }
             FXMLLoader fxmlLoader = App.lFXML("components/historyCard");
             HBox root = fxmlLoader.load();
             HistoryCard controller = fxmlLoader.getController();
@@ -82,22 +101,48 @@ public class QuizInfo {
             btnDelete.setVisible(true);
             historyQuiz.setVisible(true);
             historyLabel.setVisible(true);
+            noHistory.setVisible(false);
         } else {
             btnUpdate.setVisible(false);
             btnDelete.setVisible(false);
             historyQuiz.setVisible(false);
             historyLabel.setVisible(false);
+            noHistory.setVisible(false);
         }
     }
 
     @FXML
     public void handleDelete() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Confirmation");
+        alert.setContentText("Are you sure you want to delete this quiz?");
+        alert.setHeaderText("You are about to delete this quiz.");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            try {
+                boolean isDeleted = App.getServer().deleteQuiz(quiz.getId());
+                if (isDeleted) {
+                    App.showDialog("Success", "Quiz deleted successfully.");
+                    App.returnHome();
+                } else {
+                    App.showDialog("Error", "Failed to delete the quiz.");
+                }
+            } catch (Exception e) {
+                App.showDialog("Exception", "An error occurred while deleting the quiz: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
 
     }
 
     @FXML
-    public void handleUpdate() {
-
+    public void handleUpdate() throws Exception {
+        FXMLLoader fxmlLoader = App.lFXML("components/edit");
+        VBox root = fxmlLoader.load();
+        Edit controller = fxmlLoader.getController();
+        controller.setQuiz(quiz);
+        controller.setData(App.getServer().getQuestionsByQuizId(quiz.getId()));
+        setContent(root);
     }
 
     @FXML

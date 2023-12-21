@@ -38,4 +38,14 @@ public class HistoryCard {
         point.setText(String.valueOf(answer.getPoint()));
     }
 
+    public void setTitle() {
+        date.setText("Date");
+        email.setText("Email");
+        idQuiz.setText("ID");
+        nameQuiz.setText("Name Quiz");
+        nameUser.setText("Name User");
+        numcorrect.setText("Num Correct");
+        point.setText("Point");
+    }
+
 }

@@ -47,6 +47,7 @@
                   </VBox>
                   <Separator prefWidth="200.0" />
                   <Label fx:id="historyLabel" styleClass="textInfo" text="History" />
+                  <Label fx:id="noHistory" disable="true" text="Label" />
                   <ListView fx:id="historyQuiz" prefHeight="200.0" prefWidth="938.0" />
                </children>
                <padding>

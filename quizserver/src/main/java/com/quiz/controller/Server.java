@@ -133,4 +133,25 @@ public class Server extends UnicastRemoteObject implements ServerImp {
         return list;
     }
 
+    @Override
+    public boolean deleteQuiz(int quizId) throws Exception {
+        return connect.deleteQuiz(quizId);
+    }
+
+    @Override
+    public boolean updateQuiz(Quiz quiz, ArrayList<Question> questions) throws Exception {
+        connect.updateQuiz(quiz, quiz.getId());
+        if (!connect.deletaAllQuestionByQuizId(quiz.getId())) {
+            System.out.println("Error delete all question");
+            return false;
+        }
+        for (Question question : questions) {
+            if (!connect.addQuestionToQuiz(quiz.getId(), question)) {
+                System.out.println("Error add question");
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

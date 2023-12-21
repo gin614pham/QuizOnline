@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="975.0" stylesheets="@../css/create.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quiz.controller.Edit">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="rootC">
+         <children>
+            <Label fx:id="userLabel" prefHeight="63.0" prefWidth="842.0" style="-fx-background-color: white;" styleClass="lable" text="Edit Quiz" textFill="#269cdf">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+            <Button fx:id="btnCreate" mnemonicParsing="false" onAction="#create" text="Save" />
+         </children>
+      </HBox>
+      <ScrollPane prefHeight="595.0" prefWidth="975.0" style="-fx-background-color: white;">
+         <content>
+            <VBox alignment="CENTER" maxWidth="-Infinity" prefWidth="969.0" styleClass="content">
+               <children>
+                  <VBox fx:id="contentCreate" alignment="CENTER" maxWidth="-Infinity" prefWidth="965.0" spacing="10.0" styleClass="content">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+                  <Button fx:id="addQuiz" mnemonicParsing="false" onAction="#addForm" styleClass="btnAdd" text="Add Quiz">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </content>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </ScrollPane>
+   </children>
+</VBox>

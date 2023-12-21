@@ -40,4 +40,8 @@ public interface ServerImp extends Remote {
 
     public ArrayList<Quiz> getTopQuizzesWithMostAnswers() throws Exception;
 
+    public boolean deleteQuiz(int quizId) throws Exception;
+
+    public boolean updateQuiz(Quiz quiz, ArrayList<Question> questions) throws Exception;
+
 }

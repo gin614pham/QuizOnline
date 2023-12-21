@@ -73,4 +73,17 @@ public class FormCreate {
     public void setNum(int num) {
         labNum.setText("Question " + num);
     }
+
+    public void setQuestion(Question question) {
+        quizInput.setText(question.getQuestion());
+        answer1.setText(question.getAnswers().get(0).getContent());
+        answer2.setText(question.getAnswers().get(1).getContent());
+        answer3.setText(question.getAnswers().get(2).getContent());
+        answer4.setText(question.getAnswers().get(3).getContent());
+        for (Option o : question.getAnswers()) {
+            if (o.getId() == question.getCorrectAnswer()) {
+                A.getToggles().get(question.getAnswers().indexOf(o)).setSelected(true);
+            }
+        }
+    }
 }

@@ -578,4 +578,17 @@ public class Connect {
         return topQuizzes;
     }
 
+    public boolean deletaAllQuestionByQuizId(int quizId) {
+        System.out.println("Delete all question by quiz id: " + quizId);
+        String sql = "DELETE FROM question WHERE idquiz = ?";
+        try (PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setInt(1, quizId);
+            int result = pst.executeUpdate();
+            return result > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

@@ -75,6 +75,12 @@ public class Menu {
             case "logout":
                 App.logout();
                 break;
+            case "historyItem":
+                FXMLLoader fxmlLoader = App.lFXML("components/historyUser");
+                VBox history = fxmlLoader.load();
+                HistoryUser controller = fxmlLoader.getController();
+                controller.setHistory(App.getServer().getHistoryByUserId(App.getUser().getId()));
+                setContent(history);
             default:
                 System.out.println("Button not found" + menuItemId);
                 break;
