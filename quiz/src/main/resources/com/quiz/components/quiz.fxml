@@ -6,7 +6,6 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="800.0" spacing="10.0" styleClass="rootQuiz" stylesheets="@../css/quiz.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quiz.controller.QuizController">
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -14,27 +13,27 @@
    <children>
       <Label fx:id="numQ" styleClass="labelFC" text="Label" />
       <Label fx:id="quiz" prefHeight="38.0" prefWidth="780.0" styleClass="text-input" text="Label" />
-      <RadioButton mnemonicParsing="false">
+      <RadioButton mnemonicParsing="false" wrapText="true">
          <graphic>
-            <Label fx:id="answerQ1" prefWidth="750.0" styleClass="text-input" text="Label" />
+            <Label fx:id="answerQ1" prefWidth="750.0" styleClass="text-input" text="Label" wrapText="true" />
          </graphic>
          <toggleGroup>
             <ToggleGroup fx:id="B" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton mnemonicParsing="false" toggleGroup="$B">
+      <RadioButton mnemonicParsing="false" toggleGroup="$B" wrapText="true">
          <graphic>
-            <Label fx:id="answerQ2" prefWidth="750.0" styleClass="text-input" text="Label" />
+            <Label fx:id="answerQ2" prefWidth="750.0" styleClass="text-input" text="Label" wrapText="true" />
          </graphic>
       </RadioButton>
-      <RadioButton mnemonicParsing="false" toggleGroup="$B">
+      <RadioButton mnemonicParsing="false" toggleGroup="$B" wrapText="true">
          <graphic>
-            <Label fx:id="answerQ3" prefWidth="750.0" styleClass="text-input" text="Label" />
+            <Label fx:id="answerQ3" prefWidth="750.0" styleClass="text-input" text="Label" wrapText="true" />
          </graphic>
       </RadioButton>
-      <RadioButton mnemonicParsing="false" toggleGroup="$B">
+      <RadioButton mnemonicParsing="false" toggleGroup="$B" wrapText="true">
          <graphic>
-            <Label fx:id="answerQ4" prefWidth="750.0" styleClass="text-input" text="Label" />
+            <Label fx:id="answerQ4" lineSpacing="5.0" prefWidth="750.0" styleClass="text-input" text="Label" wrapText="true" />
          </graphic>
       </RadioButton>
       <Label fx:id="idQuestion" text="Label" visible="false" />
