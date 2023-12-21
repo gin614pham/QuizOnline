@@ -65,21 +65,20 @@ public class Auth {
             App.showDialog("Registration Error", "All fields are required.");
             return;
         }
-        // if (passwordText.length() < 6) {
-        // App.showDialog("Registration Error", "Password must be at least 6
-        // characters.");
-        // return;
-        // }
+        if (passwordText.length() < 6) {
+            App.showDialog("Registration Error", "Password must be at least 6 characters.");
+            return;
+        }
 
         if (!passwordText.equals(confirmText)) {
             App.showDialog("Registration Error", "Passwords do not match.");
             return;
         }
 
-        // if (!emailText.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-        // App.showDialog("Registration Error", "Invalid email address.");
-        // return;
-        // }
+        if (!emailText.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+            App.showDialog("Registration Error", "Invalid email address.");
+            return;
+        }
 
         // check if password and confirm password is same
         if (password.getText().equals(confirmText)) {
