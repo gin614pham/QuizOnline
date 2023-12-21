@@ -81,6 +81,7 @@ public class Menu {
                 HistoryUser controller = fxmlLoader.getController();
                 controller.setHistory(App.getServer().getHistoryByUserId(App.getUser().getId()));
                 setContent(history);
+                break;
             default:
                 System.out.println("Button not found" + menuItemId);
                 break;
