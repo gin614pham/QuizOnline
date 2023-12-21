@@ -1,0 +1,39 @@
+
+.completed {
+    -fx-text-fill: #269CDF;
+    -fx-font-size: 24;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: center;
+    -fx-padding: 20px;
+}
+
+.header {
+    -fx-text-fill: #269CDF;
+    -fx-font-size: 48;
+    -fx-font-weight: bold;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: center;
+    -fx-padding: 20px;
+}
+
+.subheader {
+    -fx-text-fill: #269CDF;
+    -fx-font-size: 32;
+    -fx-font-family: Roboto;
+    -fx-text-alignment: center;
+    -fx-padding: 20px;
+}
+
+.btnHome {
+    -fx-background-color: white;
+    -fx-text-fill: #269CDF;
+    -fx-border-color: #269CDF;
+    -fx-border-width: 1px;
+    -fx-border-radius: 45px;
+    -fx-background-radius: 45px;
+    -fx-padding: 10px 30px 10px 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+    -fx-text-alignment: center;
+    -fx-font-size: 24;
+    -fx-font-family: Roboto;
+}

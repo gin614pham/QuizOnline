@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="root" prefHeight="650.0" prefWidth="975.0" stylesheets="@../../css/home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quiz.controller.Home">
+<VBox fx:id="root" prefHeight="650.0" prefWidth="975.0" style="-fx-background-color: white;" stylesheets="@../../css/home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quiz.controller.Home">
   <children>
       <HBox fx:id="menu" prefHeight="60.0" prefWidth="975.0" />
       <VBox fx:id="content" prefHeight="595.0" prefWidth="975.0">

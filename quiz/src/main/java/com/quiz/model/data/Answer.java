@@ -7,7 +7,7 @@ public class Answer implements Serializable {
     int idUser;
     int idQuiz;
     double point;
-    int numCorrect;
+    String numCorrect;
     String dateCreated;
     String nameUser;
     String nameQuiz;
@@ -16,7 +16,7 @@ public class Answer implements Serializable {
         id = 0;
         idUser = 0;
         point = 0;
-        numCorrect = 0;
+        numCorrect = "0/0";
         dateCreated = "";
         nameUser = "";
         nameQuiz = "";
@@ -59,11 +59,11 @@ public class Answer implements Serializable {
         this.point = point;
     }
 
-    public int getNumCorrect() {
+    public String getNumCorrect() {
         return numCorrect;
     }
 
-    public void setNumCorrect(int numCorrect) {
+    public void setNumCorrect(String numCorrect) {
         this.numCorrect = numCorrect;
     }
 

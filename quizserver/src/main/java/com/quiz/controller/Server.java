@@ -108,8 +108,8 @@ public class Server extends UnicastRemoteObject implements ServerImp {
 
     @Override
     public Answer doQuiz(int userId, int quizId, ArrayList<AnswerQuiz> answers) throws Exception {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'doQuiz'");
+
+        return connect.doQuiz(userId, quizId, answers);
     }
 
 }

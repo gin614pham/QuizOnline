@@ -9,6 +9,8 @@ import java.sql.SQLException;
 
 import java.util.ArrayList;
 
+import com.quiz.model.data.Answer;
+import com.quiz.model.data.AnswerQuiz;
 import com.quiz.model.data.Option;
 import com.quiz.model.data.Question;
 import com.quiz.model.data.Quiz;
@@ -401,6 +403,81 @@ public class Connect {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public Answer doQuiz(int userId, int quizId, ArrayList<AnswerQuiz> answers) throws SQLException {
+        String sql = "INSERT INTO answer (iduser, idquiz, point, numc) VALUES (?, ?, ?, ?)";
+        int numc = 0;
+        double point = 0;
+        int idAnswer = 0;
+        try (PreparedStatement pst = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            pst.setInt(1, userId);
+            pst.setInt(2, quizId);
+            pst.setInt(3, 0);
+            pst.setInt(4, 0);
+            int result = pst.executeUpdate();
+            if (result > 0) {
+                try (ResultSet rs = pst.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        idAnswer = rs.getInt(1);
+
+                        for (AnswerQuiz answer : answers) {
+                            addAnswer(userId, idAnswer, answer);
+                            if (answer.getSelectedAnswer() == getCorrectAnswerByQuestionId(answer.getIdQuestion())) {
+                                numc++;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+        String correct = numc + "/" + answers.size();
+        point = 10.00 / answers.size() * numc;
+        sql = "UPDATE answer SET numc = ?, point = ? WHERE id = ?";
+        try (PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setString(1, correct);
+            pst.setDouble(2, point);
+            pst.setInt(3, idAnswer);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Answer answer = new Answer();
+        answer.setId(idAnswer);
+        answer.setIdUser(userId);
+        answer.setIdQuiz(quizId);
+        answer.setNumCorrect(correct);
+        answer.setPoint(point);
+        return answer;
+    }
+
+    public boolean addAnswer(int idUser, int idAnswer, AnswerQuiz answer) {
+        String sql = "INSERT INTO user_answer (iduser, idanswer, idquestion, selected) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setInt(1, idUser);
+            pst.setInt(2, idAnswer);
+            pst.setInt(3, answer.getIdQuestion());
+            pst.setInt(4, answer.getSelectedAnswer());
+            int result = pst.executeUpdate();
+            return result > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public int getCorrectAnswerByQuestionId(int questionId) throws SQLException {
+        String sql = "SELECT answercorrect FROM question WHERE id = ?";
+        try (PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setInt(1, questionId);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("answercorrect");
+                }
+            }
+        }
+        return -1; // or throw an exception if appropriate
     }
 
 }
