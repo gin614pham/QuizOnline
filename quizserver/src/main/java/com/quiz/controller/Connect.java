@@ -97,6 +97,19 @@ public class Connect {
         return null;
     }
 
+    public String getEmailById(int id) {
+        try (PreparedStatement pst = conn.prepareStatement("SELECT email FROM user WHERE id = ?")) {
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                return rs.getString("email");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public int addQuiz(Quiz quiz) {
         try (PreparedStatement pst = conn.prepareStatement("INSERT INTO quiz ( iduser, name) VALUES (?, ?)",
                 Statement.RETURN_GENERATED_KEYS)) {
@@ -159,6 +172,21 @@ public class Connect {
             e.printStackTrace();
         }
         return quizzes;
+    }
+
+    public String getQuizNameById(int quizId) {
+        String quizName = "";
+        try (PreparedStatement pst = conn.prepareStatement("SELECT name FROM quiz WHERE id = ?")) {
+            pst.setInt(1, quizId);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    quizName = rs.getString("name");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return quizName;
     }
 
     public ArrayList<Quiz> searchQuiz(String searchInput) {
@@ -478,6 +506,76 @@ public class Connect {
             }
         }
         return -1; // or throw an exception if appropriate
+    }
+
+    public ArrayList<Answer> getHistoryByUserId(int userId) throws SQLException {
+        ArrayList<Answer> list = new ArrayList<>();
+        String sql = "SELECT * FROM answer WHERE iduser = ?";
+        try (PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setInt(1, userId);
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    Answer answer = new Answer();
+                    answer.setId(rs.getInt("id"));
+                    answer.setIdUser(rs.getInt("iduser"));
+                    answer.setIdQuiz(rs.getInt("idquiz"));
+                    answer.setNumCorrect(rs.getString("numc"));
+                    answer.setPoint(rs.getDouble("point"));
+                    answer.setDateCreated(rs.getTimestamp("create_at").toString());
+                    answer.setNameUser(getUsernameById(rs.getInt("iduser")));
+                    answer.setNameQuiz(getQuizNameById(rs.getInt("idquiz")));
+                    answer.setEmail(getEmailById(rs.getInt("iduser")));
+                    list.add(answer);
+                }
+            }
+        }
+        return list;
+    }
+
+    public ArrayList<Answer> getHistoryByQuizId(int quizId) throws SQLException {
+        ArrayList<Answer> list = new ArrayList<>();
+        String sql = "SELECT * FROM answer WHERE idquiz = ?";
+        try (PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setInt(1, quizId);
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    Answer answer = new Answer();
+                    answer.setId(rs.getInt("id"));
+                    answer.setIdUser(rs.getInt("iduser"));
+                    answer.setIdQuiz(rs.getInt("idquiz"));
+                    answer.setNumCorrect(rs.getString("numc"));
+                    answer.setPoint(rs.getDouble("point"));
+                    answer.setDateCreated(rs.getTimestamp("create_at").toString());
+                    answer.setNameUser(getUsernameById(rs.getInt("iduser")));
+                    answer.setNameQuiz(getQuizNameById(rs.getInt("idquiz")));
+                    answer.setEmail(getEmailById(rs.getInt("iduser")));
+                    list.add(answer);
+                }
+            }
+        }
+
+        return list;
+    }
+
+    public ArrayList<Quiz> getTopQuizzesWithMostAnswers() throws SQLException {
+        ArrayList<Quiz> topQuizzes = new ArrayList<>();
+        String sql = "SELECT q.*, COUNT(a.id) as answer_count FROM quiz q " +
+                "JOIN answer a ON q.id = a.idquiz " +
+                "GROUP BY q.id ORDER BY answer_count DESC LIMIT 10";
+        try (PreparedStatement pst = conn.prepareStatement(sql)) {
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    String name = rs.getString("name");
+                    int numQuestions = getNumQuestionsById(id);
+                    int iduser = rs.getInt("iduser");
+                    String author = getUsernameById(iduser);
+                    String dateCreated = rs.getDate("created_at").toString();
+                    topQuizzes.add(new Quiz(id, name, numQuestions, author, iduser, dateCreated));
+                }
+            }
+        }
+        return topQuizzes;
     }
 
 }

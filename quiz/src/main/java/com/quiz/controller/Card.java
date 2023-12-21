@@ -27,7 +27,7 @@ public class Card {
 
     // function handle click
     @FXML
-    public void handleClick() throws IOException {
+    public void handleClick() throws Exception {
         FXMLLoader fxmlLoader = App.lFXML("components/quizInfo");
         VBox form = fxmlLoader.load();
         QuizInfo controller = fxmlLoader.getController();

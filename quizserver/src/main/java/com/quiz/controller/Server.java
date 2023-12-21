@@ -112,4 +112,25 @@ public class Server extends UnicastRemoteObject implements ServerImp {
         return connect.doQuiz(userId, quizId, answers);
     }
 
+    @Override
+    public ArrayList<Answer> getHistoryByUserId(int userId) throws Exception {
+
+        ArrayList<Answer> list = new ArrayList<>();
+        connect.getHistoryByUserId(userId).forEach((answer) -> list.add(answer));
+        return list;
+    }
+
+    @Override
+    public ArrayList<Answer> getHistoryByQuizId(int quizId) throws Exception {
+        return connect.getHistoryByQuizId(quizId);
+    }
+
+    @Override
+    public ArrayList<Quiz> getTopQuizzesWithMostAnswers() throws Exception {
+
+        ArrayList<Quiz> list = new ArrayList<>();
+        connect.getTopQuizzesWithMostAnswers().forEach((quiz) -> list.add(quiz));
+        return list;
+    }
+
 }

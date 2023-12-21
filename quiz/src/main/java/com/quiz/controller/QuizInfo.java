@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.quiz.App;
+import com.quiz.model.data.Answer;
 import com.quiz.model.data.Question;
 import com.quiz.model.data.Quiz;
 
@@ -13,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class QuizInfo {
@@ -36,7 +38,7 @@ public class QuizInfo {
     private Label dateCreate;
 
     @FXML
-    private ListView<?> historyQuiz;
+    private ListView<HBox> historyQuiz;
 
     @FXML
     private Label idAuthor;
@@ -47,9 +49,12 @@ public class QuizInfo {
     @FXML
     private Label numQuiz;
 
+    @FXML
+    private Label historyLabel;
+
     private Quiz quiz;
 
-    public void setQuiz(Quiz quiz) throws IOException {
+    public void setQuiz(Quiz quiz) throws Exception {
         IdQuiz.setText("ID: " + String.valueOf(quiz.getId()));
         nameQuiz.setText(quiz.getName());
         numQuiz.setText("Questions: " + String.valueOf(quiz.getNumQuestions()));
@@ -58,7 +63,17 @@ public class QuizInfo {
         dateCreate.setText("Date created: " + quiz.getDateCreated());
         this.quiz = quiz;
         setContent();
+        setHistory(App.getServer().getHistoryByQuizId(quiz.getId()));
+    }
 
+    public void setHistory(ArrayList<Answer> list) throws IOException {
+        for (Answer a : list) {
+            FXMLLoader fxmlLoader = App.lFXML("components/historyCard");
+            HBox root = fxmlLoader.load();
+            HistoryCard controller = fxmlLoader.getController();
+            controller.setData(a);
+            historyQuiz.getItems().add(root);
+        }
     }
 
     private void setContent() throws IOException {
@@ -66,10 +81,12 @@ public class QuizInfo {
             btnUpdate.setVisible(true);
             btnDelete.setVisible(true);
             historyQuiz.setVisible(true);
+            historyLabel.setVisible(true);
         } else {
             btnUpdate.setVisible(false);
             btnDelete.setVisible(false);
             historyQuiz.setVisible(false);
+            historyLabel.setVisible(false);
         }
     }
 

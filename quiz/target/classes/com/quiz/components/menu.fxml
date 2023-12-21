@@ -56,8 +56,22 @@
       </HBox>
       <MenuButton mnemonicParsing="false" styleClass="buttonSetting">
         <items>
-          <MenuItem fx:id="historyItem" mnemonicParsing="false" onAction="#handleMenuItemClick" text="History" />
-          <MenuItem fx:id="logout" mnemonicParsing="false" onAction="#handleMenuItemClick" text="Logout" />
+          <MenuItem fx:id="historyItem" mnemonicParsing="false" onAction="#handleMenuItemClick" text="History">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../public/icon/icons8-history-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic></MenuItem>
+          <MenuItem fx:id="logout" mnemonicParsing="false" onAction="#handleMenuItemClick" text="Logout">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../public/icon/icons8-logout-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic></MenuItem>
         </items>
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">

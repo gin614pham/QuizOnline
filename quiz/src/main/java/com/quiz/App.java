@@ -77,6 +77,8 @@ public class App extends Application {
         home.setMenu();
         for (Quiz quiz : getServer().getLast10Quizzes()) {
             home.addCard(quiz);
+        }
+        for (Quiz quiz : getServer().getTopQuizzesWithMostAnswers()) {
             home.addCardRecent(quiz);
         }
         setRoot(root);

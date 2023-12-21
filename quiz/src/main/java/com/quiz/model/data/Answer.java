@@ -11,6 +11,7 @@ public class Answer implements Serializable {
     String dateCreated;
     String nameUser;
     String nameQuiz;
+    String email;
 
     public Answer() {
         id = 0;
@@ -20,6 +21,7 @@ public class Answer implements Serializable {
         dateCreated = "";
         nameUser = "";
         nameQuiz = "";
+        email = "";
     }
 
     public Answer(int idUser, int idQuiz) {
@@ -89,5 +91,13 @@ public class Answer implements Serializable {
 
     public void setNameQuiz(String nameQuiz) {
         this.nameQuiz = nameQuiz;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

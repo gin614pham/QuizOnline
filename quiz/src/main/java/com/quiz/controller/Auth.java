@@ -1,14 +1,11 @@
 package com.quiz.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import com.quiz.App;
-import com.quiz.model.data.Quiz;
 import com.quiz.model.data.User;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -39,13 +36,15 @@ public class Auth {
     // create function Login
     @FXML
     private void login() throws Exception {
-        // get data from text field and password field
         String emailText = email.getText();
         String passwordText = password.getText();
-
-        // send data to server
+        if (emailText.isEmpty() || passwordText.isEmpty()) {
+            App.showDialog("Login Error", "Email and password cannot be empty.");
+            return;
+        }
         User auth = App.getServer().login(emailText, passwordText);
         if (auth == null) {
+            App.showDialog("Login Error", "Incorrect email or password.");
             return;
         }
         App.setUser(auth);
@@ -59,14 +58,35 @@ public class Auth {
         String emailText = email.getText();
         String nameText = name.getText();
         String passwordText = password.getText();
-        // get data from text field and password field
         String confirmText = confirm.getText();
+
+        // Check that none of the inputs are empty
+        if (emailText.isEmpty() || nameText.isEmpty() || passwordText.isEmpty() || confirmText.isEmpty()) {
+            App.showDialog("Registration Error", "All fields are required.");
+            return;
+        }
+        // if (passwordText.length() < 6) {
+        // App.showDialog("Registration Error", "Password must be at least 6
+        // characters.");
+        // return;
+        // }
+
+        if (!passwordText.equals(confirmText)) {
+            App.showDialog("Registration Error", "Passwords do not match.");
+            return;
+        }
+
+        // if (!emailText.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+        // App.showDialog("Registration Error", "Invalid email address.");
+        // return;
+        // }
 
         // check if password and confirm password is same
         if (password.getText().equals(confirmText)) {
             // send data to server
             User auth = App.getServer().register(emailText, passwordText, nameText);
             if (auth == null) {
+                App.showDialog("Registration Error", "Email already exists.");
                 return;
             }
             App.setUser(auth);

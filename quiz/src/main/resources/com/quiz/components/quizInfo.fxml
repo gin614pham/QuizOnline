@@ -45,7 +45,9 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <ListView fx:id="historyQuiz" prefWidth="200.0" />
+                  <Separator prefWidth="200.0" />
+                  <Label fx:id="historyLabel" styleClass="textInfo" text="History" />
+                  <ListView fx:id="historyQuiz" prefHeight="200.0" prefWidth="938.0" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

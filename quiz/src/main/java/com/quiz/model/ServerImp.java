@@ -34,4 +34,10 @@ public interface ServerImp extends Remote {
 
     public Answer doQuiz(int userId, int quizId, ArrayList<AnswerQuiz> answers) throws Exception;
 
+    public ArrayList<Answer> getHistoryByUserId(int userId) throws Exception;
+
+    public ArrayList<Answer> getHistoryByQuizId(int quizId) throws Exception;
+
+    public ArrayList<Quiz> getTopQuizzesWithMostAnswers() throws Exception;
+
 }
