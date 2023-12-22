@@ -462,6 +462,7 @@ public class Connect {
         }
         String correct = numc + "/" + answers.size();
         point = 10.00 / answers.size() * numc;
+        point = Math.round(point * 100.0) / 100.0;
         sql = "UPDATE answer SET numc = ?, point = ? WHERE id = ?";
         try (PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setString(1, correct);
